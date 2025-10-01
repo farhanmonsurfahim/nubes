@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUB Evening Society</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: linear-gradient(to bottom right, #f8faff, #eefcff);
+        }
+        .page { display: none; }
+        .page.active { display: block; }
+        .modal-backdrop {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); z-index: 40; backdrop-filter: blur(4px);
+        }
+        .modal {
+            display: none; position: fixed; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); z-index: 50;
+        }
+        .loader {
+            border: 4px solid rgba(255, 255, 255, 0.3); border-top: 4px solid #fff;
+            border-radius: 50%; width: 24px; height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        .admin-loader {
+             border: 4px solid #f3f3f3; border-top: 4px solid #4f46e5;
+             border-radius: 50%; width: 24px; height: 24px;
+             animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        .hero-background {
+            background: linear-gradient(135deg, #f5f3ff, #ecfeff);
+        }
+        
+        .page { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Styles for cover page generator */
+        .cover-form-group label {
+            font-weight: 600;
+            color: #4b5563;
+        }
+        .cover-form-group input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            margin-top: 0.25rem;
+            transition: border-color 0.2s ease-in-out;
+            background-color: #f9fafb;
+        }
+        .cover-form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+        }
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            border: 2px dashed #d1d5db;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #f9fafb;
+        }
+        .logo-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                primary: {
+                  DEFAULT: '#4f46e5',
+                  light: '#e0e7ff',
+                  dark: '#4338ca',
+                },
+                accent: {
+                  DEFAULT: '#14b8a6',
+                  light: '#ccfbf1',
+                  dark: '#0f766e',
+                }
+              }
+            }
+          }
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-lg shadow-sm sticky top-0 z-30">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-xl font-black text-primary nav-link tracking-tight flex items-center gap-2" data-page="home">
+                        <i data-lucide="graduation-cap" class="w-7 h-7"></i>
+                        NUB Evening Society
+                    </a>
+                </div>
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-baseline space-x-1">
+                        <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary-light transition-colors flex items-center gap-2" data-page="home"><i data-lucide="home" class="w-4 h-4"></i>Home</a>
+                        <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary-light transition-colors flex items-center gap-2" data-page="notes"><i data-lucide="notebook-tabs" class="w-4 h-4"></i>Note</a>
+                        <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary-light transition-colors flex items-center gap-2" data-page="blood"><i data-lucide="heart-pulse" class="w-4 h-4"></i>Blood</a>
+                        <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary-light transition-colors flex items-center gap-2" data-page="coverpage"><i data-lucide="file-check-2" class="w-4 h-4"></i>Cover Page</a>
+                        <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary-light transition-colors flex items-center gap-2" data-page="notices"><i data-lucide="megaphone" class="w-4 h-4"></i>Notices</a>
+                        <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary-light transition-colors flex items-center gap-2" data-page="team"><i data-lucide="users" class="w-4 h-4"></i>Team</a>
+                        <a href="#" id="admin-link" class="px-3 py-2 rounded-md text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary-light transition-colors flex items-center gap-2"><i data-lucide="sliders-horizontal" class="w-4 h-4"></i>Admin</a>
+                        <a href="#" class="nav-link ml-4 px-4 py-2 rounded-full text-sm font-semibold text-white bg-red-600 hover:bg-red-700 shadow-sm transition-transform hover:scale-105 flex items-center gap-2" data-page="membership"><i data-lucide="user-plus" class="w-4 h-4"></i>Join</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex lg:hidden">
+                    <button id="mobile-menu-button" type="button" class="bg-primary-light inline-flex items-center justify-center p-2 rounded-md text-primary hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-primary" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i data-lucide="menu" class="block h-6 w-6"></i>
+                        <i data-lucide="x" class="hidden h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div class="lg:hidden hidden absolute top-16 inset-x-0 bg-white shadow-lg p-4" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-2">
+                <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3" data-page="home"><i data-lucide="home" class="w-5 h-5"></i>Home</a>
+                <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3" data-page="notes"><i data-lucide="notebook-tabs" class="w-5 h-5"></i>Note</a>
+                <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3" data-page="blood"><i data-lucide="heart-pulse" class="w-5 h-5"></i>Blood</a>
+                <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3" data-page="coverpage"><i data-lucide="file-check-2" class="w-5 h-5"></i>Cover Page</a>
+                <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3" data-page="notices"><i data-lucide="megaphone" class="w-5 h-5"></i>Notices</a>
+                <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3" data-page="team"><i data-lucide="users" class="w-5 h-5"></i>Team</a>
+                <a href="#" id="admin-link-mobile" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3"><i data-lucide="sliders-horizontal" class="w-5 h-5"></i>Admin</a>
+                <a href="#" class="nav-link block w-full text-center mt-4 px-3 py-3 rounded-md text-base font-semibold text-white bg-red-600 hover:bg-red-700 shadow-sm flex items-center justify-center gap-3" data-page="membership"><i data-lucide="user-plus" class="w-5 h-5"></i>Join</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div id="home" class="page active space-y-12 md:space-y-20">
+            <div class="hero-background p-8 md:p-16 rounded-3xl text-center overflow-hidden reveal">
+                <h1 class="text-4xl md:text-6xl font-black text-gray-900 mb-4 tracking-tighter">Welcome to NUB Evening Society</h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Your central hub for academic resources, community support, and university updates.</p>
+            </div>
+            
+            <div class="reveal">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 flex items-center justify-center gap-3 text-gray-800"><i data-lucide="compass" class="text-primary"></i> Explore Our Sections</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <a href="#" data-page="notes" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform">
+                        <i data-lucide="notebook-tabs" class="w-12 h-12 mx-auto text-primary mb-3"></i>
+                        <h4 class="font-bold text-lg">Note Sharing</h4>
+                    </a>
+                    <a href="#" data-page="blood" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform">
+                        <i data-lucide="heart-pulse" class="w-12 h-12 mx-auto text-red-500 mb-3"></i>
+                        <h4 class="font-bold text-lg">Blood Bank</h4>
+                    </a>
+                    <a href="#" data-page="coverpage" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform">
+                        <i data-lucide="file-check-2" class="w-12 h-12 mx-auto text-accent mb-3"></i>
+                        <h4 class="font-bold text-lg">Cover Page</h4>
+                    </a>
+                     <a href="#" data-page="notices" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform">
+                        <i data-lucide="megaphone" class="w-12 h-12 mx-auto text-yellow-500 mb-3"></i>
+                        <h4 class="font-bold text-lg">Notices</h4>
+                    </a>
+                    <a href="#" data-page="team" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform">
+                        <i data-lucide="users" class="w-12 h-12 mx-auto text-green-500 mb-3"></i>
+                        <h4 class="font-bold text-lg">Our Team</h4>
+                    </a>
+                     <a href="#" data-page="membership" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform">
+                        <i data-lucide="user-plus" class="w-12 h-12 mx-auto text-blue-500 mb-3"></i>
+                        <h4 class="font-bold text-lg">Join Us</h4>
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                <div class="reveal">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-gray-800"><i data-lucide="megaphone" class="text-primary"></i>Latest Notices</h2>
+                    <div id="latest-notices-list" class="space-y-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
+                        <div class="loader-container flex justify-center py-8"><div class="admin-loader"></div></div>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-gray-800"><i data-lucide="notebook-tabs" class="text-primary"></i>Latest Notes</h2>
+                    <div id="latest-notes-list" class="space-y-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
+                        <div class="loader-container flex justify-center py-8"><div class="admin-loader"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="notes" class="page">
+             <div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="book-marked" class="text-accent"></i>Note Sharing</h2>
+                <div id="note-sharing-content">
+                    <div id="subject-list-view">
+                        <div class="mb-8 max-w-lg mx-auto">
+                            <input type="text" id="subject-search" placeholder="Search for a subject..." class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm">
+                        </div>
+                        <div id="subject-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+                    </div>
+                    <div id="notes-list-view" class="hidden">
+                        <button id="back-to-subjects" class="mb-6 bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 flex items-center gap-2 transition font-semibold">
+                            <i data-lucide="arrow-left" class="w-4 h-4"></i> Back
+                        </button>
+                        <h3 id="notes-subject-title" class="text-2xl md:text-3xl font-bold mb-6"></h3>
+                        <div id="notes-list" class="space-y-4"></div>
+                    </div>
+                </div>
+                <div class="mt-12 border-t pt-8">
+                    <h3 class="text-2xl font-semibold mb-6 text-center">Share a Note</h3>
+                    <form id="add-note-form" class="max-w-xl mx-auto space-y-4">
+                        <input type="text" id="uploader-name" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
+                        <select id="note-subject" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select>
+                        <input type="text" id="note-topic" placeholder="Note Topic (e.g., Midterm Suggestion)" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
+                        <input type="url" id="gdrive-link" placeholder="https://docs.google.com/..." required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
+                        <button type="submit" class="w-full bg-red-600 text-white font-semibold px-4 py-3 rounded-lg hover:bg-red-700 shadow-sm transition-transform hover:scale-105 flex items-center justify-center gap-2">
+                            <span class="btn-text flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-5 h-5"></i>
+                                Submit Note
+                            </span>
+                            <div class="loader hidden"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="blood" class="page">
+            <div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200">
+                 <h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="heart-pulse" class="text-red-500"></i>Blood Bank</h2>
+                 <div class="mb-8 border rounded-lg overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Name</th>
+                                    <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Blood Group</th>
+                                    <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Contact</th>
+                                    <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Address</th>
+                                </tr>
+                            </thead>
+                            <tbody id="donors-list" class="bg-white divide-y divide-gray-200"></tbody>
+                        </table>
+                    </div>
+                 </div>
+                 <div class="border-t pt-8">
+                    <h3 class="text-2xl font-semibold mb-6 text-center">Become a Donor</h3>
+                    <form id="add-donor-form" class="max-w-xl mx-auto space-y-4">
+                        <input type="text" id="donor-name" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
+                        <select id="blood-group" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
+                            <option value="">Select Blood Group</option>
+                            <option value="A+">A+</option> <option value="A-">A-</option> <option value="B+">B+</option> <option value="B-">B-</option> <option value="AB+">AB+</option> <option value="AB-">AB-</option> <option value="O+">O+</option> <option value="O-">O-</option>
+                        </select>
+                        <input type="text" id="donor-contact" placeholder="Contact Number" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
+                        <input type="text" id="donor-address" placeholder="Address" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
+                        <button type="submit" class="w-full bg-red-600 text-white font-semibold px-4 py-3 rounded-lg hover:bg-red-700 shadow-sm transition-transform hover:scale-105 flex items-center justify-center gap-2">
+                            <span class="btn-text flex items-center justify-center gap-2">
+                                <i data-lucide="user-check" class="w-5 h-5"></i>
+                                Register as Donor
+                            </span>
+                            <div class="loader hidden"></div>
+                        </button>
+                    </form>
+                 </div>
+            </div>
+        </div>
+
+        <div id="coverpage" class="page">
+             <div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="file-check-2" class="text-accent"></i>Assignment Cover Page Generator</h2>
+                <div class="max-w-4xl mx-auto">
+                     <div class="logo-container">
+                        <img id="logo" src="https://raw.githubusercontent.com/farhanmonsurfahim/assignment/main/nub.jpeg" alt="University Logo">
+                    </div>
+
+                    <form id="coverPageForm" class="w-full space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="cover-form-group">
+                                <label for="universityName" class="block text-sm">University Name</label>
+                                <input type="text" id="universityName" value="Northern University Bangladesh" readonly>
+                            </div>
+                            <div class="cover-form-group">
+                                <label for="name" class="block text-sm">Student Name</label>
+                                <input type="text" id="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="cover-form-group">
+                                <label for="studentId" class="block text-sm">Student ID</label>
+                                <input type="text" id="studentId" placeholder="e.g., 123456789" required>
+                            </div>
+                            <div class="cover-form-group">
+                                <label for="department" class="block text-sm">Department</label>
+                                <input type="text" id="department" placeholder="e.g., Computer Science and Engineering" required>
+                            </div>
+                            <div class="cover-form-group">
+                                <label for="semester" class="block text-sm">Semester</label>
+                                <input type="text" id="semester" placeholder="e.g., 5th" required>
+                            </div>
+                            <div class="cover-form-group">
+                                <label for="section" class="block text-sm">Section</label>
+                                <input type="text" id="section" placeholder="e.g., A" required>
+                            </div>
+                            <div class="cover-form-group md:col-span-2">
+                                <label for="teacherDesignation" class="block text-sm">Teacher Designation</label>
+                                <input type="text" id="teacherDesignation" placeholder="e.g., Assistant Professor" required>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-center pt-6">
+                            <button type="submit" class="bg-red-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-red-700 shadow-md transition-all transform hover:scale-105 flex items-center justify-center gap-2">
+                                <i data-lucide="download" class="w-5 h-5"></i>
+                                Generate PDF
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="notices" class="page">
+            <div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="clipboard-list" class="text-accent"></i>Notices</h2>
+                <div class="mb-8 max-w-2xl mx-auto">
+                    <input type="text" id="notice-search" placeholder="Search notices by title or content..." class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm">
+                </div>
+                <div id="notices-list" class="space-y-8 max-w-4xl mx-auto"></div>
+            </div>
+        </div>
+
+        <div id="team" class="page">
+            <div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="users" class="text-accent"></i>Our Team</h2>
+                <div id="team-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"></div>
+            </div>
+        </div>
+
+        <div id="membership" class="page">
+             <div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200 max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-6 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="user-plus" class="text-accent"></i>Request Membership</h2>
+                <form id="membership-request-form" class="space-y-4">
+                    <input type="text" id="req-name" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
+                    <input type="text" id="req-student-id" placeholder="Student ID" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
+                    <input type="text" id="req-section" placeholder="Section" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
+                    <input type="text" id="req-semester" placeholder="Semester" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
+                    <button type="submit" class="w-full bg-red-600 font-semibold text-white px-4 py-3 rounded-lg hover:bg-red-700 shadow-sm transition-transform hover:scale-105 flex items-center justify-center gap-2">
+                        <span class="btn-text flex items-center justify-center gap-2">
+                            <i data-lucide="file-plus-2" class="w-5 h-5"></i>
+                            Request Membership
+                        </span>
+                        <div class="loader hidden"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div id="admin" class="page">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="sliders-horizontal" class="text-accent"></i>Admin Panel</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-4">Manage Subjects</h3>
+                    <form id="add-subject-form" class="flex gap-2 mb-4">
+                        <input type="text" id="new-subject-name" placeholder="New Subject Name" required class="flex-grow px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition">
+                        <button type="submit" class="bg-red-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition flex items-center justify-center gap-2">
+                            <span class="btn-text flex items-center justify-center gap-2">
+                                <i data-lucide="plus" class="w-5 h-5"></i>Add
+                            </span>
+                            <div class="admin-loader hidden"></div>
+                        </button>
+                    </form>
+                    <div id="admin-subjects-list" class="space-y-2"></div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-4">Manage Notes</h3>
+                    <div class="flex gap-2 mb-4">
+                        <select id="admin-note-subject-filter" class="flex-grow px-4 py-2 border rounded-lg bg-white focus:ring-2 focus:ring-accent transition"></select>
+                    </div>
+                    <div id="admin-notes-list" class="space-y-2"></div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-4">Manage Blood Donors</h3>
+                    <div id="admin-donors-list" class="space-y-2"></div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-4">Manage Notices</h3>
+                    <form id="add-notice-form" class="space-y-4 mb-4">
+                        <input type="text" id="notice-title" placeholder="Notice Title" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition">
+                        <textarea id="notice-desc" placeholder="Notice Description" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"></textarea>
+                        <div>
+                             <label for="notice-image-upload" class="block text-sm font-medium text-gray-700">Notice Image (optional)</label>
+                             <input type="file" id="notice-image-upload" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100">
+                        </div>
+                        <p class="text-xs text-red-600 font-semibold flex items-center gap-1"><i data-lucide="alert-triangle" class="w-4 h-4"></i>Important: Images must be small (under 750 KB).</p>
+                        <button type="submit" class="w-full bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 flex items-center justify-center gap-2 font-semibold transition">
+                            <span class="btn-text">Post Notice</span>
+                            <div class="admin-loader hidden"></div>
+                        </button>
+                    </form>
+                    <div id="admin-notices-list" class="space-y-2"></div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-4">Manage Team</h3>
+                    <form id="add-team-member-form" class="space-y-4 mb-4">
+                         <input type="text" id="member-name" placeholder="Member Name" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition">
+                         <input type="text" id="member-title" placeholder="Member Title (e.g., President)" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition">
+                         <div>
+                            <label for="member-image-upload" class="block text-sm font-medium text-gray-700">Profile Image</label>
+                            <input type="file" id="member-image-upload" accept="image/*" required class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100">
+                         </div>
+                         <p class="text-xs text-red-600 font-semibold flex items-center gap-1"><i data-lucide="alert-triangle" class="w-4 h-4"></i>Important: Images must be small (under 750 KB).</p>
+                         <button type="submit" class="w-full bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 flex items-center justify-center gap-2 font-semibold transition">
+                            <span class="btn-text">Add Member</span>
+                            <div class="admin-loader hidden"></div>
+                        </button>
+                    </form>
+                    <div id="admin-team-list" class="space-y-2"></div>
+                </div>
+
+                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+                    <h3 class="text-xl font-semibold mb-4">Membership Requests</h3>
+                    <div id="admin-requests-list" class="space-y-2"></div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 lg:col-span-2">
+                    <h3 class="text-xl font-semibold mb-4">Settings</h3>
+                    <form id="settings-form" class="space-y-4">
+                        <label class="block"><span class="text-sm font-medium">Facebook Page Link</span><input type="url" id="facebook-link" required class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"></label>
+                        <label class="block"><span class="text-sm font-medium">WhatsApp Group Link</span><input type="url" id="whatsapp-link" required class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"></label>
+                        <button type="submit" class="bg-red-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-red-700 transition flex items-center justify-center gap-2">
+                            <span class="btn-text flex items-center justify-center gap-2">
+                                <i data-lucide="save" class="w-5 h-5"></i>Save Settings
+                            </span>
+                             <div class="loader hidden"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t mt-12">
+        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-600">
+            <p class="font-semibold text-gray-800">&copy; 2024 NUB Evening Society. All rights reserved.</p>
+            <div class="flex justify-center items-center space-x-6 mt-4">
+                 <a href="#" id="footer-fb-link" target="_blank" class="text-gray-500 hover:text-primary transition"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                 <a href="#" id="footer-wa-link" target="_blank" class="text-gray-500 hover:text-accent transition"><i data-lucide="message-circle" class="w-6 h-6"></i></a>
+            </div>
+            <p class="mt-4 text-sm">Powered by NUB Evening Society</p>
+        </div>
+    </footer>
+
+    <div id="toast" class="fixed bottom-5 right-5 bg-gray-900 text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-300 opacity-0 translate-y-4 z-50">
+        <p id="toast-message"></p>
+    </div>
+
+    <div id="admin-login-backdrop" class="modal-backdrop"></div>
+    <div id="admin-login-modal" class="modal bg-white p-8 rounded-lg shadow-xl w-full max-w-sm m-4">
+        <h3 class="text-2xl font-bold mb-4 text-center">Admin Access</h3>
+        <p class="text-center text-gray-600 mb-6">Enter the secret ID to access the admin panel.</p>
+        <form id="admin-login-form">
+            <input type="password" id="admin-secret-id" class="w-full px-4 py-2 border rounded-lg mb-4 focus:ring-2 focus:ring-primary transition" placeholder="Secret ID">
+            <button type="submit" class="w-full bg-red-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition flex items-center justify-center gap-2">
+                <span class="btn-text">Login</span>
+                <div class="loader hidden"></div>
+            </button>
+            <button type="button" id="cancel-admin-login" class="w-full mt-2 bg-gray-200 text-gray-700 font-semibold px-4 py-2 rounded-lg hover:bg-gray-300 transition">Cancel</button>
+        </form>
+    </div>
+
+    <div id="confirm-modal-backdrop" class="modal-backdrop"></div>
+    <div id="confirm-modal" class="modal bg-white p-8 rounded-lg shadow-xl w-full max-w-sm m-4">
+        <h3 class="text-lg font-bold mb-4" id="confirm-modal-title">Are you sure?</h3>
+        <p class="text-gray-600 mb-6" id="confirm-modal-message">This action cannot be undone.</p>
+        <div class="flex justify-end gap-4">
+            <button id="confirm-modal-cancel" class="bg-gray-200 text-gray-700 font-semibold px-4 py-2 rounded-lg hover:bg-gray-300 transition">Cancel</button>
+            <button id="confirm-modal-confirm" class="bg-red-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition">Confirm</button>
+        </div>
+    </div>
+
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { 
+            getFirestore, collection, getDocs, doc, addDoc, deleteDoc, 
+            onSnapshot, query, where, setDoc, getDoc, orderBy, limit
+        } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { 
+            getAuth, signInAnonymously, onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyAuMJ6Ok2juoW8axxa8X-sNW0iklFjAOxo",
+            authDomain: "nub-evening-society.firebaseapp.com",
+            projectId: "nub-evening-society",
+            storageBucket: "nub-evening-society.appspot.com",
+            messagingSenderId: "472314792829",
+            appId: "1:472314792829:web:861341df07455e0d805a14",
+            measurementId: "G-XP13M59QG4"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        let currentAdminSecret = '';
+        let allSubjects = [];
+        let allNotices = [];
+
+        const showToast = (message, success = true) => {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.textContent = message;
+            toast.className = `fixed bottom-5 right-5 text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-300 z-50 ${success ? 'bg-green-600' : 'bg-red-600'} opacity-100 translate-y-0`;
+            setTimeout(() => { toast.classList.add('opacity-0', 'translate-y-4'); }, 3000);
+        };
+        
+        const showPage = (pageId) => {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            const newPage = document.getElementById(pageId);
+            newPage.classList.add('active');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            newPage.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            window.scrollTo(0, 0);
+        };
+
+        const createAdminDeleteItem = (id, text, subText = '') => {
+            const div = document.createElement('div');
+            div.className = 'flex items-center justify-between bg-gray-100 p-2 rounded-lg';
+            div.innerHTML = `<div class="truncate pr-2"><p class="font-medium truncate">${text}</p>${subText ? `<p class="text-sm text-gray-500 truncate">${subText}</p>` : ''}</div><button data-id="${id}" class="delete-btn text-red-500 hover:text-red-700 p-1 flex-shrink-0 rounded-full hover:bg-red-100 transition"><i data-lucide="trash-2" class="w-5 h-5"></i></button>`;
+            return div;
+        };
+
+        const toggleButtonLoading = (form, isLoading) => {
+            const button = form.querySelector('button[type="submit"]');
+            if (!button) return;
+            const btnText = button.querySelector('.btn-text');
+            const loader = button.querySelector('.loader, .admin-loader');
+            if (isLoading) {
+                button.disabled = true;
+                if (btnText) btnText.classList.add('hidden');
+                if (loader) loader.classList.remove('hidden');
+            } else {
+                button.disabled = false;
+                if (btnText) btnText.classList.remove('hidden');
+                if (loader) loader.classList.add('hidden');
+            }
+        };
+
+        const confirmModalBackdrop = document.getElementById('confirm-modal-backdrop');
+        const confirmModal = document.getElementById('confirm-modal');
+        const confirmBtn = document.getElementById('confirm-modal-confirm');
+        const cancelBtn = document.getElementById('confirm-modal-cancel');
+        const confirmModalMessage = document.getElementById('confirm-modal-message');
+        let confirmCallback = null;
+        const showConfirmModal = (message, onConfirm) => {
+            confirmModalMessage.textContent = message;
+            confirmCallback = onConfirm;
+            confirmModalBackdrop.style.display = 'block';
+            confirmModal.style.display = 'block';
+        };
+        const hideConfirmModal = () => {
+            confirmModalBackdrop.style.display = 'none';
+            confirmModal.style.display = 'none';
+            confirmCallback = null;
+        };
+        confirmBtn.addEventListener('click', () => { if (confirmCallback) confirmCallback(); hideConfirmModal(); });
+        [cancelBtn, confirmModalBackdrop].forEach(el => el.addEventListener('click', hideConfirmModal));
+        
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuBtn = document.getElementById('mobile-menu-button');
+        const mobileMenuIcons = mobileMenuBtn.querySelectorAll('i');
+        const closeMobileMenu = () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenuIcons[0].classList.remove('hidden');
+            mobileMenuIcons[1].classList.add('hidden');
+        };
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage(e.currentTarget.dataset.page);
+                closeMobileMenu();
+            });
+        });
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuIcons.forEach(i => i.classList.toggle('hidden'));
+        });
+
+        const fetchSettings = async () => {
+            try {
+                const settingsSnap = await getDoc(doc(db, 'settings', 'config'));
+                if (settingsSnap.exists()) {
+                    const settings = settingsSnap.data();
+                    currentAdminSecret = settings.adminId;
+                    document.getElementById('facebook-link').value = settings.facebookLink;
+                    document.getElementById('whatsapp-link').value = settings.whatsappLink;
+                    document.getElementById('footer-fb-link').href = settings.facebookLink;
+                    document.getElementById('footer-wa-link').href = settings.whatsappLink;
+                } else {
+                    currentAdminSecret = 'admin123';
+                     await setDoc(doc(db, "settings", "config"), { adminId: "admin123", facebookLink: "https://facebook.com", whatsappLink: "https://whatsapp.com" });
+                    await fetchSettings();
+                }
+            } catch (error) { console.error("Error fetching settings:", error); showToast("Could not load app settings.", false); }
+        };
+
+        const renderSubjects = (subjects) => {
+            allSubjects = subjects;
+            const ui = { list: document.getElementById('subject-list'), select: document.getElementById('note-subject'), filter: document.getElementById('admin-note-subject-filter'), adminList: document.getElementById('admin-subjects-list') };
+            Object.values(ui).forEach(el => el.innerHTML = '');
+            ui.select.innerHTML = ui.filter.innerHTML = '<option value="">Select Subject</option>';
+            subjects.sort((a, b) => a.name.localeCompare(b.name)).forEach(s => {
+                const card = document.createElement('div');
+                card.className = 'p-6 bg-gray-50 rounded-xl border-2 border-transparent hover:border-primary hover:bg-primary-light cursor-pointer transition-all flex items-center gap-4 transform hover:-translate-y-1';
+                card.innerHTML = `<div class="bg-primary-light p-3 rounded-full"><i data-lucide="book-marked" class="text-primary"></i></div><span class="font-semibold text-lg">${s.name}</span>`;
+                card.dataset.id = s.id; card.dataset.name = s.name;
+                card.addEventListener('click', () => showNotesForSubject(s.id, s.name));
+                ui.list.appendChild(card);
+                const option = new Option(s.name, s.id);
+                ui.select.appendChild(option.cloneNode(true));
+                ui.filter.appendChild(option.cloneNode(true));
+                const adminItem = createAdminDeleteItem(s.id, s.name);
+                adminItem.querySelector('.delete-btn').dataset.collection = 'subjects';
+                ui.adminList.appendChild(adminItem);
+            });
+            lucide.createIcons();
+        };
+        
+        const renderLatestNotices = (notices) => {
+            const list = document.getElementById('latest-notices-list');
+            list.innerHTML = '';
+            if (notices.length === 0) { list.innerHTML = '<p class="text-center text-gray-500 py-4">No notices posted yet.</p>'; return; }
+            notices.forEach(notice => {
+                const item = document.createElement('div');
+                item.className = 'p-4 border rounded-xl hover:bg-gray-50 hover:shadow-md transition cursor-pointer';
+                item.innerHTML = `<h4 class="font-semibold truncate text-gray-800">${notice.title}</h4><p class="text-sm text-gray-500">Posted on: ${new Date(notice.createdAt.seconds * 1000).toLocaleDateString()}</p>`;
+                list.appendChild(item);
+            });
+        };
+        
+        const renderLatestNotes = (notes) => {
+            const list = document.getElementById('latest-notes-list');
+            list.innerHTML = '';
+            if (notes.length === 0 || allSubjects.length === 0) { list.innerHTML = '<p class="text-center text-gray-500 py-4">No notes shared yet.</p>'; return; }
+            notes.forEach(note => {
+                const subjectName = (allSubjects.find(s => s.id === note.subjectId) || {}).name || 'Unknown Subject';
+                const item = document.createElement('div');
+                item.className = 'p-4 border rounded-xl hover:bg-gray-50 hover:shadow-md transition';
+                item.innerHTML = `<h4 class="font-bold truncate text-gray-800">${note.topic || 'Note'}</h4><p class="text-sm text-gray-600">${subjectName}</p><p class="text-sm text-gray-500 mt-1">Shared by <span class="font-medium text-gray-800">${note.uploaderName}</span></p><a href="${note.gdriveLink}" target="_blank" class="text-sm text-primary hover:underline font-semibold">View Note &rarr;</a>`;
+                list.appendChild(item);
+            });
+        };
+
+        const renderNotesForSubject = (notes, subjectName) => {
+            document.getElementById('notes-subject-title').textContent = `Notes for: ${subjectName}`;
+            const notesList = document.getElementById('notes-list');
+            notesList.innerHTML = notes.length === 0 ? '<p class="text-gray-500 text-center py-8">No notes have been shared for this subject yet.</p>' : '';
+            notes.sort((a,b) => b.createdAt.seconds - a.createdAt.seconds).forEach(note => {
+                const noteEl = document.createElement('div');
+                noteEl.className = 'p-4 border rounded-lg flex justify-between items-center bg-white shadow-sm';
+                noteEl.innerHTML = `<div><p class="font-bold text-lg text-gray-800">${note.topic}</p><p class="text-sm text-gray-600">Shared by: ${note.uploaderName}</p></div> <a href="${note.gdriveLink}" target="_blank" class="bg-primary-light text-primary font-semibold px-4 py-2 rounded-lg text-sm hover:bg-indigo-200 transition">View Note</a>`;
+                notesList.appendChild(noteEl);
+            });
+        };
+        
+        const renderAdminNotes = (notes) => {
+            const list = document.getElementById('admin-notes-list');
+            list.innerHTML = notes.length === 0 ? '<p class="text-sm text-gray-500">No notes found.</p>' : '';
+            notes.forEach(note => { 
+                const item = createAdminDeleteItem(note.id, note.topic || 'Note', `By: ${note.uploaderName}`);
+                item.querySelector('.delete-btn').dataset.collection = 'notes';
+                list.appendChild(item);
+            });
+            lucide.createIcons();
+        };
+
+        const renderBloodDonors = (donors) => {
+            const list = document.getElementById('donors-list');
+            const adminList = document.getElementById('admin-donors-list');
+            list.innerHTML = adminList.innerHTML = '';
+            donors.forEach(donor => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${donor.name}</td><td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-red-600">${donor.bloodGroup}</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${donor.contact}</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${donor.address}</td>`;
+                list.appendChild(tr);
+                const adminItem = createAdminDeleteItem(donor.id, donor.name, `${donor.bloodGroup} - ${donor.contact}`);
+                adminItem.querySelector('.delete-btn').dataset.collection = 'donors';
+                adminList.appendChild(adminItem);
+            });
+            lucide.createIcons();
+        };
+
+        const renderNotices = (noticeData) => {
+            allNotices = noticeData;
+            const list = document.getElementById('notices-list');
+            const adminList = document.getElementById('admin-notices-list');
+            list.innerHTML = adminList.innerHTML = '';
+            
+            const searchTerm = document.getElementById('notice-search').value.toLowerCase();
+            const filteredNotices = allNotices.filter(notice => {
+                const title = notice.data.title.toLowerCase();
+                const description = notice.data.description.toLowerCase();
+                return title.includes(searchTerm) || description.includes(searchTerm);
+            });
+
+            if (filteredNotices.length === 0) {
+                list.innerHTML = '<p class="text-center text-gray-500">No notices found.</p>';
+            }
+
+            filteredNotices.forEach(notice => {
+                const date = new Date(notice.data.createdAt.seconds * 1000).toLocaleDateString();
+                const card = document.createElement('div');
+                card.className = 'p-6 border rounded-xl shadow-sm bg-white notice-card';
+                card.innerHTML = `<h3 class="text-2xl font-bold mb-3 text-gray-900 notice-title">${notice.data.title}</h3>${notice.data.imageDataUrl ? `<img src="${notice.data.imageDataUrl}" alt="${notice.data.title}" class="w-full h-auto max-h-96 object-contain rounded-lg mb-4 bg-gray-100" onerror="this.style.display='none'">` : ''}<p class="text-gray-700 whitespace-pre-wrap mb-4 notice-description">${notice.data.description}</p><p class="text-sm text-gray-500">Posted on: ${date}</p>`;
+                list.appendChild(card);
+            });
+
+            allNotices.forEach(notice => {
+                 const date = new Date(notice.data.createdAt.seconds * 1000).toLocaleDateString();
+                const adminItem = createAdminDeleteItem(notice.id, notice.data.title, `Posted on ${date}`);
+                adminItem.querySelector('.delete-btn').dataset.collection = 'notices';
+                adminList.appendChild(adminItem);
+            });
+
+            lucide.createIcons();
+        };
+
+        const renderTeam = (allData) => {
+            const list = document.getElementById('team-list');
+            const adminList = document.getElementById('admin-team-list');
+            list.innerHTML = adminList.innerHTML = '';
+            allData.forEach(member => {
+                const card = document.createElement('div');
+                card.className = 'text-center bg-white p-6 rounded-2xl shadow-sm transition-transform transform hover:-translate-y-2';
+                card.innerHTML = `<img src="${member.data.imageDataUrl}" alt="${member.data.name}" class="w-32 h-32 mx-auto rounded-full object-cover shadow-lg mb-4 ring-4 ring-primary-light" onerror="this.src='https://placehold.co/128x128/E0E7FF/4F46E5?text=${member.data.name.charAt(0)}'"><h4 class="text-xl font-bold text-gray-900">${member.data.name}</h4><p class="text-primary font-semibold">${member.data.title}</p>`;
+                list.appendChild(card);
+                const adminItem = createAdminDeleteItem(member.id, member.data.name, member.data.title);
+                adminItem.querySelector('.delete-btn').dataset.collection = 'team';
+                adminList.appendChild(adminItem);
+            });
+            lucide.createIcons();
+        };
+
+        const renderRequests = (requests) => {
+            const list = document.getElementById('admin-requests-list');
+            list.innerHTML = '';
+            requests.forEach(req => { 
+                const item = createAdminDeleteItem(req.id, req.name, `ID: ${req.studentId}, Sem: ${req.semester}, Sec: ${req.section}`);
+                item.querySelector('.delete-btn').dataset.collection = 'requests';
+                list.appendChild(item);
+             });
+            lucide.createIcons();
+        };
+
+        const setupListeners = () => {
+            onSnapshot(collection(db, 'subjects'), s => renderSubjects(s.docs.map(d => ({ id: d.id, ...d.data() }))));
+            onSnapshot(collection(db, 'donors'), s => renderBloodDonors(s.docs.map(d => ({ id: d.id, ...d.data() }))));
+            onSnapshot(query(collection(db, 'notices'), orderBy('createdAt', 'desc')), s => renderNotices(s.docs.map(d => ({id: d.id, data: d.data()}))));
+            onSnapshot(collection(db, 'team'), s => renderTeam(s.docs.map(d => ({id: d.id, data: d.data()}))));
+            onSnapshot(collection(db, 'requests'), s => renderRequests(s.docs.map(d => ({ id: d.id, ...d.data() }))));
+            onSnapshot(collection(db, "notes"), s => {
+                const allNotes = s.docs.map(d => ({ id: d.id, ...d.data() }));
+                const subjectId = document.getElementById('admin-note-subject-filter').value;
+                renderAdminNotes(subjectId ? allNotes.filter(n => n.subjectId === subjectId) : allNotes);
+            });
+            onSnapshot(query(collection(db, 'notices'), orderBy('createdAt', 'desc'), limit(3)), s => renderLatestNotices(s.docs.map(d => d.data())));
+            onSnapshot(query(collection(db, 'notes'), orderBy('createdAt', 'desc'), limit(5)), s => renderLatestNotes(s.docs.map(d => ({id: d.id, ...d.data()}))));
+        };
+
+        onAuthStateChanged(auth, user => {
+            if (user) { fetchSettings(); setupListeners(); } 
+            else { signInAnonymously(auth).catch(e => console.error("Sign-in failed:", e)); }
+        });
+
+        document.getElementById('subject-search').addEventListener('input', e => {
+            const term = e.target.value.toLowerCase();
+            document.querySelectorAll('#subject-list > div').forEach(card => {
+                card.style.display = card.textContent.toLowerCase().includes(term) ? 'flex' : 'none';
+            });
+        });
+
+        document.getElementById('notice-search').addEventListener('input', () => renderNotices(allNotices));
+
+        const showNotesForSubject = async (subjectId, subjectName) => {
+            const q = query(collection(db, "notes"), where("subjectId", "==", subjectId));
+            const snapshot = await getDocs(q);
+            renderNotesForSubject(snapshot.docs.map(d => ({id: d.id, ...d.data()})), subjectName);
+            document.getElementById('subject-list-view').classList.add('hidden');
+            document.getElementById('notes-list-view').classList.remove('hidden');
+            lucide.createIcons();
+        };
+
+        document.getElementById('back-to-subjects').addEventListener('click', () => {
+            document.getElementById('notes-list-view').classList.add('hidden');
+            document.getElementById('subject-list-view').classList.remove('hidden');
+        });
+        
+        const handleFormSubmit = (formId, collectionName, dataExtractor) => {
+            const form = document.getElementById(formId);
+            if (!form) return;
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                toggleButtonLoading(form, true);
+                try {
+                    const data = dataExtractor(e.target);
+                    if(!data) {
+                        toggleButtonLoading(form, false);
+                        return;
+                    }
+                    await addDoc(collection(db, collectionName), data);
+                    showToast("Submitted successfully!"); e.target.reset();
+                } catch (error) { 
+                    showToast("Submission failed.", false); 
+                    console.error(error); 
+                } finally {
+                    toggleButtonLoading(form, false);
+                }
+            });
+        };
+        handleFormSubmit('add-note-form', 'notes', f => ({ uploaderName: f['uploader-name'].value, subjectId: f['note-subject'].value, topic: f['note-topic'].value, gdriveLink: f['gdrive-link'].value, createdAt: new Date() }));
+        handleFormSubmit('add-donor-form', 'donors', f => ({ name: f['donor-name'].value, bloodGroup: f['blood-group'].value, contact: f['donor-contact'].value, address: f['donor-address'].value }));
+        handleFormSubmit('membership-request-form', 'requests', f => ({ name: f['req-name'].value, studentId: f['req-student-id'].value, section: f['req-section'].value, semester: f['req-semester'].value }));
+
+        const showAdminLogin = () => { document.getElementById('admin-login-backdrop').style.display = 'block'; document.getElementById('admin-login-modal').style.display = 'block'; };
+        const hideAdminLogin = () => { document.getElementById('admin-login-backdrop').style.display = 'none'; document.getElementById('admin-login-modal').style.display = 'none'; document.getElementById('admin-login-form').reset(); };
+        ['admin-link', 'admin-link-mobile'].forEach(id => document.getElementById(id).addEventListener('click', e => { e.preventDefault(); showAdminLogin(); }));
+        ['cancel-admin-login', 'admin-login-backdrop'].forEach(id => document.getElementById(id).addEventListener('click', hideAdminLogin));
+
+        document.getElementById('admin-login-form').addEventListener('submit', async e => {
+            e.preventDefault(); const form = e.target; toggleButtonLoading(form, true);
+            await new Promise(res => setTimeout(res, 500));
+            if (document.getElementById('admin-secret-id').value === currentAdminSecret) {
+                showToast("Admin access granted."); showPage('admin'); hideAdminLogin();
+            } else { showToast("Incorrect secret ID.", false); }
+            toggleButtonLoading(form, false);
+        });
+
+        const addSubjectForm = document.getElementById('add-subject-form');
+        addSubjectForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            toggleButtonLoading(addSubjectForm, true);
+            try {
+                const subjectNameInput = e.target['new-subject-name'];
+                if (subjectNameInput.value.trim() === '') {
+                    showToast("Subject name cannot be empty.", false);
+                    return;
+                }
+                await addDoc(collection(db, 'subjects'), { name: subjectNameInput.value });
+                showToast("Subject added.");
+                e.target.reset();
+            } catch (error) {
+                showToast("Failed to add subject.", false);
+                console.error(error);
+            } finally {
+                toggleButtonLoading(addSubjectForm, false);
+            }
+        });
+        
+        const settingsForm = document.getElementById('settings-form');
+        settingsForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            toggleButtonLoading(settingsForm, true);
+            const settings = { facebookLink: e.target['facebook-link'].value, whatsappLink: e.target['whatsapp-link'].value };
+            try {
+                await setDoc(doc(db, "settings", "config"), settings, { merge: true });
+                showToast("Settings saved.");
+                await fetchSettings();
+            } catch (error) {
+                showToast("Failed to save settings.", false);
+                console.error(error);
+            } finally {
+                toggleButtonLoading(settingsForm, false);
+            }
+        });
+        
+        const handleFormWithImageUpload = (formId, collectionName, dataExtractor) => {
+            const form = document.getElementById(formId);
+            if (!form) return;
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                toggleButtonLoading(form, true);
+                try {
+                    const { file, data } = dataExtractor(form);
+                    if (file) {
+                        if (file.size > 750 * 1024) {
+                            showToast("Image is too large. Please use a file under 750 KB.", false);
+                            toggleButtonLoading(form, false);
+                            return;
+                        }
+                        const reader = new FileReader();
+                        reader.onload = async (event) => {
+                            try {
+                                data.imageDataUrl = event.target.result;
+                                await addDoc(collection(db, collectionName), data);
+                                showToast("Item added successfully.");
+                                form.reset();
+                            } catch (error) {
+                                console.error("Firestore write error:", error);
+                                showToast("Failed to save item. The image might be too large.", false);
+                            } finally {
+                                toggleButtonLoading(form, false);
+                            }
+                        };
+                        reader.onerror = () => {
+                            showToast("Failed to read image file.", false);
+                            toggleButtonLoading(form, false);
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        addDoc(collection(db, collectionName), data)
+                            .then(() => {
+                                showToast("Item added successfully.");
+                                form.reset();
+                            })
+                            .catch(error => {
+                                showToast("Failed to add item.", false);
+                                console.error(error);
+                            })
+                            .finally(() => toggleButtonLoading(form, false));
+                    }
+                } catch (error) {
+                    showToast("An unexpected error occurred.", false);
+                    console.error(error);
+                    toggleButtonLoading(form, false);
+                }
+            });
+        };
+        handleFormWithImageUpload('add-notice-form', 'notices', f => ({ file: f['notice-image-upload'].files[0], data: { title: f['notice-title'].value, description: f['notice-desc'].value, createdAt: new Date(), imageDataUrl: null } }));
+        handleFormWithImageUpload('add-team-member-form', 'team', f => ({ file: f['member-image-upload'].files[0], data: { name: f['member-name'].value, title: f['member-title'].value, imageDataUrl: null } }));
+        
+        document.getElementById('admin-note-subject-filter').addEventListener('change', async e => {
+            const subjectId = e.target.value;
+            const q = subjectId ? query(collection(db, 'notes'), where('subjectId', '==', subjectId)) : collection(db, 'notes');
+            const snapshot = await getDocs(q);
+            renderAdminNotes(snapshot.docs.map(d => ({id: d.id, ...d.data()})));
+        });
+
+        document.body.addEventListener('click', async e => {
+            const deleteBtn = e.target.closest('.delete-btn');
+            if (deleteBtn) {
+                const { id, collection } = deleteBtn.dataset;
+                showConfirmModal("Are you sure? This cannot be undone.", async () => {
+                    try {
+                        await deleteDoc(doc(db, collection, id));
+                        showToast("Item deleted.");
+                    } catch (error) { showToast("Failed to delete item.", false); console.error(error); }
+                });
+            }
+        });
+
+        window.onload = () => { 
+            lucide.createIcons();
+            showPage('home');
+        };
+    </script>
+    <script>
+        // --- New Cover Page Generator Logic ---
+        const coverPageForm = document.getElementById('coverPageForm');
+        let logoData = null;
+
+        const defaultLogoURL = "https://raw.githubusercontent.com/farhanmonsurfahim/assignment/main/nub.jpeg";
+        const defaultLogoImage = new Image();
+        defaultLogoImage.crossOrigin = "anonymous";
+        defaultLogoImage.onload = () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = defaultLogoImage.width;
+            canvas.height = defaultLogoImage.height;
+            ctx.drawImage(defaultLogoImage, 0, 0);
+            logoData = canvas.toDataURL('image/jpeg');
+        };
+        defaultLogoImage.src = defaultLogoURL;
+
+        const getCoverFormData = () => {
+            return {
+                universityName: document.getElementById('universityName').value,
+                name: document.getElementById('name').value,
+                studentId: document.getElementById('studentId').value,
+                department: document.getElementById('department').value,
+                semester: document.getElementById('semester').value,
+                section: document.getElementById('section').value,
+                assignmentTopic: document.getElementById('assignmentTopic').value,
+                subject: document.getElementById('subject').value,
+                courseTeacher: document.getElementById('courseTeacher').value,
+                teacherDesignation: document.getElementById('teacherDesignation').value,
+                submissionDate: new Date().toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                })
+            };
+        };
+
+        const generatePDF = () => {
+            const formData = getCoverFormData();
+            
+            if (!logoData || !formData.name || !formData.studentId || !formData.department || !formData.semester || !formData.section || !formData.assignmentTopic || !formData.subject) {
+                showToast("Please fill in all required fields.", false);
+                return;
+            }
+
+            if (typeof window.jspdf === 'undefined') {
+                console.error('jsPDF library not loaded.');
+                showToast('Error: PDF generation library is not available.', false);
+                return;
+            }
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            doc.setDrawColor(0);
+            doc.setLineWidth(1);
+            doc.rect(10, 10, doc.internal.pageSize.getWidth() - 20, doc.internal.pageSize.getHeight() - 20);
+
+            const universityText = formData.universityName;
+            
+            const logoSize = 60;
+            const logoX = (doc.internal.pageSize.getWidth() - logoSize) / 2;
+            doc.addImage(logoData, 'JPEG', logoX, 40, logoSize, logoSize);
+
+            doc.setFontSize(22);
+            doc.text(universityText, doc.internal.pageSize.getWidth() / 2, 120, { align: 'center' });
+
+            doc.setLineWidth(0.5);
+            doc.line(30, 135, doc.internal.pageSize.getWidth() - 30, 135);
+
+            doc.setFontSize(26);
+            doc.setFont('Helvetica', 'bold');
+            doc.text('ASSIGNMENT SUBMISSION', doc.internal.pageSize.getWidth() / 2, 150, { align: 'center' });
+            doc.setFontSize(18);
+            doc.setFont('Helvetica', 'normal');
+            doc.text('Subject: ' + formData.subject, doc.internal.pageSize.getWidth() / 2, 160, { align: 'center' });
+
+            const boxWidth = 150;
+            const boxHeight = 15;
+            const boxX = (doc.internal.pageSize.getWidth() - boxWidth) / 2;
+            doc.setDrawColor(0);
+            doc.setFillColor(255, 255, 255);
+            doc.rect(boxX, 170, boxWidth, boxHeight, 'FD');
+            doc.setFontSize(14);
+            doc.text(formData.assignmentTopic, doc.internal.pageSize.getWidth() / 2, 179, { align: 'center' });
+            
+            doc.setLineWidth(0.5);
+            doc.line(30, 190, doc.internal.pageSize.getWidth() - 30, 190);
+
+            doc.setFontSize(14);
+            const leftX = 30;
+            const rightX = doc.internal.pageSize.getWidth() / 2 + 10;
+            const spacing = 8;
+            let currentY = 210;
+
+            doc.setFont('Helvetica', 'bold');
+            doc.text('Submitted by:', leftX, currentY);
+            doc.line(leftX, currentY + 1, leftX + 25, currentY + 1); // Underline
+            doc.setFont('Helvetica', 'normal');
+            currentY += spacing + 5;
+            doc.text('Name: ' + formData.name, leftX, currentY);
+            doc.text('ID: ' + formData.studentId, leftX, currentY + spacing);
+            doc.text('Semester/Section: ' + formData.semester + '-' + formData.section, leftX, currentY + 2 * spacing);
+            doc.text('Dept. of ' + formData.department, leftX, currentY + 3 * spacing);
+            let finalY = currentY + 4 * spacing;
+            
+            if (formData.courseTeacher) {
+                currentY = 210;
+                doc.setFont('Helvetica', 'bold');
+                doc.text('Submitted to:', rightX, currentY);
+                doc.line(rightX, currentY + 1, rightX + 25, currentY + 1); // Underline
+                doc.setFont('Helvetica', 'normal');
+                currentY += spacing + 5;
+                doc.text('Teacher Name: ' + formData.courseTeacher, rightX, currentY);
+                if (formData.teacherDesignation) {
+                    doc.text('Designation: ' + formData.teacherDesignation, rightX, currentY + spacing);
+                    currentY += spacing;
+                }
+            }
+
+            const finalYPos = Math.max(finalY, currentY) + 20;
+            doc.text('Date: ' + formData.submissionDate, doc.internal.pageSize.getWidth() / 2, finalYPos, { align: 'center' });
+
+            doc.save(formData.assignmentTopic.replace(/ /g, '_') + '_Cover_Page.pdf');
+        };
+
+        if (coverPageForm) {
+            coverPageForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                generatePDF();
+            });
+        }
+    </script>
+</body>
+</html>
+
+
