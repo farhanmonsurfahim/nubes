@@ -173,7 +173,7 @@
 
         <div id="blood" class="page"><div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200"><h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="heart-pulse" class="text-red-500"></i>Blood Bank</h2><div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto"><select id="blood-group-filter" class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"><option value="">Filter by Blood Group</option><option value="A+">A+</option><option value="A-">A-</option><option value="B+">B+</option><option value="B-">B-</option><option value="AB+">AB+</option><option value="AB-">AB-</option><option value="O+">O+</option><option value="O-">O-</option></select><select id="blood-dept-filter" class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"></select></div><div class="border rounded-lg overflow-hidden"><div class="overflow-x-auto"><table class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Name</th><th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Blood Group</th><th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Department</th><th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Contact</th><th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Address</th></tr></thead><tbody id="donors-list" class="bg-white divide-y divide-gray-200"></tbody></table></div></div><div class="border-t pt-8 mt-8"><h3 class="text-2xl font-semibold mb-6 text-center">Become a Donor</h3><form id="add-donor-form" class="max-w-xl mx-auto space-y-4"><input type="text" id="donor-name" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><select id="blood-group" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><option value="">Select Blood Group</option><option value="A+">A+</option><option value="A-">A-</option><option value="B+">B+</option><option value="B-">B-</option><option value="AB+">AB+</option><option value="AB-">AB-</option><option value="O+">O+</option><option value="O-">O-</option></select><select id="donor-department" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select><input type="text" id="donor-contact" placeholder="Contact Number" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><input type="text" id="donor-address" placeholder="Address" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><button type="submit" class="w-full bg-red-600 text-white font-semibold px-4 py-3 rounded-lg hover:bg-red-700 shadow-sm transition-transform hover:scale-105 flex items-center justify-center gap-2"><span class="btn-text flex items-center justify-center gap-2"><i data-lucide="user-check" class="w-5 h-5"></i>Register as Donor</span><div class="loader hidden"></div></button></form></div></div></div>
 
-        <div id="cr" class="page"><div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200"><h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="contact" class="text-indigo-500"></i>Class Representatives</h2><div class="mb-8 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto"><select id="cr-dept-filter" class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"></select><select id="cr-semester-filter" class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"></select><input type="text" id="cr-section-filter" placeholder="Filter by Section..." class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"></div><div id="cr-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div><div class="border-t pt-8 mt-12"><h3 class="text-2xl font-semibold mb-6 text-center">Submit CR Information</h3><form id="add-cr-form" class="max-w-xl mx-auto space-y-4"><p class="text-sm text-yellow-800 font-semibold flex items-start gap-2 bg-yellow-100 p-3 rounded-lg"><i data-lucide="alert-triangle" class="w-5 h-5 flex-shrink-0 mt-0.5"></i><span>Only submit this form if you are an existing Class Representative (CR). All submissions require admin approval.</span></p><input type="text" id="cr-name" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><select id="cr-department" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select><select id="cr-semester" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select><input type="text" id="cr-section" placeholder="Section (e.g., A)" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><input type="tel" id="cr-phone" placeholder="Phone Number" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><input type="url" id="cr-facebook" placeholder="Facebook Profile Link" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><button type="submit" class="w-full bg-red-600 text-white font-semibold px-4 py-3 rounded-lg hover:bg-red-700 shadow-sm transition-transform hover:scale-105 flex items-center justify-center gap-2"><span class="btn-text flex items-center justify-center gap-2"><i data-lucide="send" class="w-5 h-5"></i>Submit Information</span><div class="loader hidden"></div></button></form></div></div></div>
+        <div id="cr" class="page"><div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200"><h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="contact" class="text-indigo-500"></i>Class Representatives</h2><div class="mb-8 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto"><select id="cr-dept-filter" class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"></select><select id="cr-semester-filter" class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"></select><input type="text" id="cr-section-filter" placeholder="Filter by Section..." class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"></div><div id="cr-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div><div class="border-t pt-8 mt-12"><h3 class="text-2xl font-semibold mb-6 text-center">Submit CR Information</h3><form id="add-cr-form" class="max-w-xl mx-auto space-y-4"><p class="text-sm text-yellow-800 font-semibold flex items-start gap-2 bg-yellow-100 p-3 rounded-lg"><i data-lucide="alert-triangle" class="w-5 h-5 flex-shrink-0 mt-0.5"></i><span>Only submit this form if you are an existing Class Representative (CR). All submissions require admin approval.</span></p><input type="text" id="cr-name" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><select id="cr-department" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select><select id="cr-semester" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select><input type="text" id="cr-section" placeholder="Section (e.g., A)" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><input type="tel" id="cr-phone" placeholder="Phone Number" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><input type="url" id="cr-facebook" placeholder="Facebook Profile Link" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><button type="submit" class="w-full bg-red-600 text-white font-semibold px-4 py-3 rounded-lg hover:bg-red-700 shadow-sm transition-transform hover:scale-105 flex items-center justify-center gap-2"><span class="btn-text flex items-center justify-center gap-2"><i data-lucide="send" class="w-5 h-5"></i>Submit for Approval</span><div class="loader hidden"></div></button></form></div></div></div>
 
         <div id="coverpage" class="page"><div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200"><h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="file-check-2" class="text-accent"></i>Assignment Cover Page Generator</h2><div class="max-w-4xl mx-auto"><div class="logo-container"><img id="logo" src="https://raw.githubusercontent.com/farhanmonsurfahim/assignment/main/nub.jpeg" alt="University Logo"></div><form id="coverPageForm" class="w-full space-y-4"><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div class="cover-form-group"><label for="universityName" class="block text-sm">University Name</label><input type="text" id="universityName" value="Northern University Bangladesh" readonly></div><div class="cover-form-group"><label for="name" class="block text-sm">Student Name</label><input type="text" id="name" placeholder="Your Name" required></div><div class="cover-form-group"><label for="studentId" class="block text-sm">Student ID</label><input type="text" id="studentId" placeholder="e.g., 123456789" required></div><div class="cover-form-group"><label for="department" class="block text-sm">Department</label><input type="text" id="department" placeholder="e.g., Computer Science and Engineering" required></div><div class="cover-form-group"><label for="semester" class="block text-sm">Semester</label><input type="text" id="semester" placeholder="e.g., 5th" required></div><div class="cover-form-group"><label for="section" class="block text-sm">Section</label><input type="text" id="section" placeholder="e.g., A" required></div><div class="cover-form-group md:col-span-2"><label for="assignmentTopic" class="block text-sm">Assignment Topic</label><input type="text" id="assignmentTopic" placeholder="e.g., Data Structures and Algorithms" required></div><div class="cover-form-group md:col-span-2"><label for="subject" class="block text-sm">Subject</label><input type="text" id="subject" placeholder="e.g., CSC 201: Data Structures" required></div><div class="cover-form-group"><label for="courseTeacher" class="block text-sm">Course Teacher Name</label><input type="text" id="courseTeacher" placeholder="e.g., Dr. Jane Doe" required></div><div class="cover-form-group"><label for="teacherDesignation" class="block text-sm">Teacher Designation</label><input type="text" id="teacherDesignation" placeholder="e.g., Assistant Professor" required></div></div><div class="flex justify-center pt-6"><button type="submit" class="bg-red-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-red-700 shadow-md transition-all transform hover:scale-105 flex items-center justify-center gap-2"><i data-lucide="download" class="w-5 h-5"></i>Generate PDF</button></div></form></div></div></div>
 
@@ -957,27 +957,24 @@
                 reader.readAsDataURL(file);
             });
         });
-
-        // CR Edit Modal
+        
         const crEditModalBackdrop = document.getElementById('cr-edit-modal-backdrop');
         const crEditModal = document.getElementById('cr-edit-modal');
         const crEditForm = document.getElementById('cr-edit-form');
         const crEditCancelBtn = document.getElementById('cr-edit-cancel');
 
         const openCrEditModal = async (crId) => {
-            const crDoc = await getDoc(doc(db, "crs", crId));
-            if(!crDoc.exists()) {
-                showToast("CR not found.", false);
-                return;
-            }
-            const data = crDoc.data();
+            const cr = allCRs.find(c => c.id === crId);
+            if(!cr) { showToast("CR not found.", false); return; }
+            
             crEditForm['cr-edit-id'].value = crId;
-            crEditForm['cr-edit-name'].value = data.name;
-            crEditForm['cr-edit-department'].value = data.department;
-            crEditForm['cr-edit-semester'].value = data.semester;
-            crEditForm['cr-edit-section'].value = data.section;
-            crEditForm['cr-edit-phone'].value = data.phone;
-            crEditForm['cr-edit-facebook'].value = data.facebook;
+            crEditForm['cr-edit-name'].value = cr.name;
+            crEditForm['cr-edit-department'].value = cr.department;
+            crEditForm['cr-edit-semester'].value = cr.semester;
+            crEditForm['cr-edit-section'].value = cr.section;
+            crEditForm['cr-edit-phone'].value = cr.phone;
+            crEditForm['cr-edit-facebook'].value = cr.facebook;
+
             crEditModalBackdrop.style.display = 'block';
             crEditModal.style.display = 'block';
         };
@@ -1025,68 +1022,68 @@
             populateDropdowns();
             const initialPageId = window.location.hash.substring(1) || 'home';
             showPage(initialPageId, false);
-
-            const coverPageForm = document.getElementById('coverPageForm');
-            let logoData = null;
-            const defaultLogoURL = "https://raw.githubusercontent.com/farhanmonsurfahim/assignment/main/nub.jpeg";
-            const defaultLogoImage = new Image();
-            defaultLogoImage.crossOrigin = "anonymous";
-            defaultLogoImage.onload = () => {
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                canvas.width = defaultLogoImage.width;
-                canvas.height = defaultLogoImage.height;
-                ctx.drawImage(defaultLogoImage, 0, 0);
-                logoData = canvas.toDataURL('image/jpeg');
-            };
-            defaultLogoImage.src = defaultLogoURL;
-            const getCoverFormData = () => ({
-                universityName: document.getElementById('universityName').value, name: document.getElementById('name').value, studentId: document.getElementById('studentId').value, department: document.getElementById('department').value, semester: document.getElementById('semester').value, section: document.getElementById('section').value, assignmentTopic: document.getElementById('assignmentTopic').value, subject: document.getElementById('subject').value, courseTeacher: document.getElementById('courseTeacher').value, teacherDesignation: document.getElementById('teacherDesignation').value,
-                submissionDate: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
-            });
-            const generatePDF = () => {
-                const formData = getCoverFormData();
-                if (!logoData || !formData.name || !formData.studentId || !formData.department || !formData.semester || !formData.section || !formData.assignmentTopic || !formData.subject) {
-                    if (typeof showToast === 'function') { showToast("Please fill in all required fields.", false); }
-                    return;
-                }
-                if (typeof window.jspdf === 'undefined') { 
-                    if (typeof showToast === 'function') { showToast('Error: PDF library not available.', false); }
-                    return; 
-                }
-                const { jsPDF } = window.jspdf;
-                const doc = new jsPDF();
-                doc.setDrawColor(0); doc.setLineWidth(1); doc.rect(10, 10, doc.internal.pageSize.getWidth() - 20, doc.internal.pageSize.getHeight() - 20);
-                const logoSize = 60, logoX = (doc.internal.pageSize.getWidth() - logoSize) / 2;
-                doc.addImage(logoData, 'JPEG', logoX, 40, logoSize, logoSize);
-                doc.setFontSize(22); doc.text(formData.universityName, doc.internal.pageSize.getWidth() / 2, 120, { align: 'center' });
-                doc.setLineWidth(0.5); doc.line(30, 135, doc.internal.pageSize.getWidth() - 30, 135);
-                doc.setFontSize(26); doc.setFont('Helvetica', 'bold'); doc.text('ASSIGNMENT SUBMISSION', doc.internal.pageSize.getWidth() / 2, 150, { align: 'center' });
-                doc.setFontSize(18); doc.setFont('Helvetica', 'normal'); doc.text('Subject: ' + formData.subject, doc.internal.pageSize.getWidth() / 2, 160, { align: 'center' });
-                const boxWidth = 150, boxHeight = 15, boxX = (doc.internal.pageSize.getWidth() - boxWidth) / 2;
-                doc.setDrawColor(0); doc.setFillColor(255, 255, 255); doc.rect(boxX, 170, boxWidth, boxHeight, 'FD');
-                doc.setFontSize(14); doc.text(formData.assignmentTopic, doc.internal.pageSize.getWidth() / 2, 179, { align: 'center' });
-                doc.setLineWidth(0.5); doc.line(30, 190, doc.internal.pageSize.getWidth() - 30, 190);
-                doc.setFontSize(14);
-                const leftX = 30, rightX = doc.internal.pageSize.getWidth() / 2 + 10, spacing = 8;
-                let currentY = 210;
-                doc.setFont('Helvetica', 'bold'); doc.text('Submitted by:', leftX, currentY); doc.line(leftX, currentY + 1, leftX + 25, currentY + 1);
-                doc.setFont('Helvetica', 'normal'); currentY += spacing + 5;
-                doc.text('Name: ' + formData.name, leftX, currentY); doc.text('ID: ' + formData.studentId, leftX, currentY + spacing); doc.text('Semester/Section: ' + formData.semester + '-' + formData.section, leftX, currentY + 2 * spacing); doc.text('Dept. of ' + formData.department, leftX, currentY + 3 * spacing);
-                let finalY = currentY + 4 * spacing;
-                if (formData.courseTeacher) {
-                    currentY = 210;
-                    doc.setFont('Helvetica', 'bold'); doc.text('Submitted to:', rightX, currentY); doc.line(rightX, currentY + 1, rightX + 25, currentY + 1);
-                    doc.setFont('Helvetica', 'normal'); currentY += spacing + 5;
-                    doc.text('Teacher Name: ' + formData.courseTeacher, rightX, currentY);
-                    if (formData.teacherDesignation) { doc.text('Designation: ' + formData.teacherDesignation, rightX, currentY + spacing); currentY += spacing; }
-                }
-                const finalYPos = Math.max(finalY, currentY) + 20;
-                doc.text('Date: ' + formData.submissionDate, doc.internal.pageSize.getWidth() / 2, finalYPos, { align: 'center' });
-                doc.save(formData.assignmentTopic.replace(/ /g, '_') + '_Cover_Page.pdf');
-            };
-            if (coverPageForm) coverPageForm.addEventListener('submit', (e) => { e.preventDefault(); generatePDF(); });
         };
+
+        const coverPageForm = document.getElementById('coverPageForm');
+        let logoData = null;
+        const defaultLogoURL = "https://raw.githubusercontent.com/farhanmonsurfahim/assignment/main/nub.jpeg";
+        const defaultLogoImage = new Image();
+        defaultLogoImage.crossOrigin = "anonymous";
+        defaultLogoImage.onload = () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = defaultLogoImage.width;
+            canvas.height = defaultLogoImage.height;
+            ctx.drawImage(defaultLogoImage, 0, 0);
+            logoData = canvas.toDataURL('image/jpeg');
+        };
+        defaultLogoImage.src = defaultLogoURL;
+        const getCoverFormData = () => ({
+            universityName: document.getElementById('universityName').value, name: document.getElementById('name').value, studentId: document.getElementById('studentId').value, department: document.getElementById('department').value, semester: document.getElementById('semester').value, section: document.getElementById('section').value, assignmentTopic: document.getElementById('assignmentTopic').value, subject: document.getElementById('subject').value, courseTeacher: document.getElementById('courseTeacher').value, teacherDesignation: document.getElementById('teacherDesignation').value,
+            submissionDate: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+        });
+        const generatePDF = () => {
+            const formData = getCoverFormData();
+            if (!logoData || !formData.name || !formData.studentId || !formData.department || !formData.semester || !formData.section || !formData.assignmentTopic || !formData.subject) {
+                if (typeof showToast === 'function') { showToast("Please fill in all required fields.", false); }
+                return;
+            }
+            if (typeof window.jspdf === 'undefined') { 
+                if (typeof showToast === 'function') { showToast('Error: PDF library not available.', false); }
+                return; 
+            }
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.setDrawColor(0); doc.setLineWidth(1); doc.rect(10, 10, doc.internal.pageSize.getWidth() - 20, doc.internal.pageSize.getHeight() - 20);
+            const logoSize = 60, logoX = (doc.internal.pageSize.getWidth() - logoSize) / 2;
+            doc.addImage(logoData, 'JPEG', logoX, 40, logoSize, logoSize);
+            doc.setFontSize(22); doc.text(formData.universityName, doc.internal.pageSize.getWidth() / 2, 120, { align: 'center' });
+            doc.setLineWidth(0.5); doc.line(30, 135, doc.internal.pageSize.getWidth() - 30, 135);
+            doc.setFontSize(26); doc.setFont('Helvetica', 'bold'); doc.text('ASSIGNMENT SUBMISSION', doc.internal.pageSize.getWidth() / 2, 150, { align: 'center' });
+            doc.setFontSize(18); doc.setFont('Helvetica', 'normal'); doc.text('Subject: ' + formData.subject, doc.internal.pageSize.getWidth() / 2, 160, { align: 'center' });
+            const boxWidth = 150, boxHeight = 15, boxX = (doc.internal.pageSize.getWidth() - boxWidth) / 2;
+            doc.setDrawColor(0); doc.setFillColor(255, 255, 255); doc.rect(boxX, 170, boxWidth, boxHeight, 'FD');
+            doc.setFontSize(14); doc.text(formData.assignmentTopic, doc.internal.pageSize.getWidth() / 2, 179, { align: 'center' });
+            doc.setLineWidth(0.5); doc.line(30, 190, doc.internal.pageSize.getWidth() - 30, 190);
+            doc.setFontSize(14);
+            const leftX = 30, rightX = doc.internal.pageSize.getWidth() / 2 + 10, spacing = 8;
+            let currentY = 210;
+            doc.setFont('Helvetica', 'bold'); doc.text('Submitted by:', leftX, currentY); doc.line(leftX, currentY + 1, leftX + 25, currentY + 1);
+            doc.setFont('Helvetica', 'normal'); currentY += spacing + 5;
+            doc.text('Name: ' + formData.name, leftX, currentY); doc.text('ID: ' + formData.studentId, leftX, currentY + spacing); doc.text('Semester/Section: ' + formData.semester + '-' + formData.section, leftX, currentY + 2 * spacing); doc.text('Dept. of ' + formData.department, leftX, currentY + 3 * spacing);
+            let finalY = currentY + 4 * spacing;
+            if (formData.courseTeacher) {
+                currentY = 210;
+                doc.setFont('Helvetica', 'bold'); doc.text('Submitted to:', rightX, currentY); doc.line(rightX, currentY + 1, rightX + 25, currentY + 1);
+                doc.setFont('Helvetica', 'normal'); currentY += spacing + 5;
+                doc.text('Teacher Name: ' + formData.courseTeacher, rightX, currentY);
+                if (formData.teacherDesignation) { doc.text('Designation: ' + formData.teacherDesignation, rightX, currentY + spacing); currentY += spacing; }
+            }
+            const finalYPos = Math.max(finalY, currentY) + 20;
+            doc.text('Date: ' + formData.submissionDate, doc.internal.pageSize.getWidth() / 2, finalYPos, { align: 'center' });
+            doc.save(formData.assignmentTopic.replace(/ /g, '_') + '_Cover_Page.pdf');
+        };
+        if (coverPageForm) coverPageForm.addEventListener('submit', (e) => { e.preventDefault(); generatePDF(); });
     </script>
 </body>
 </html>
