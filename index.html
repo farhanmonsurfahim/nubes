@@ -133,6 +133,7 @@
                 <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3" data-page="notices"><i data-lucide="megaphone" class="w-5 h-5"></i>Notices</a>
                 <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3" data-page="team"><i data-lucide="users" class="w-5 h-5"></i>Team</a>
                 <a href="#" id="admin-link-mobile" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3"><i data-lucide="sliders-horizontal" class="w-5 h-5"></i>Admin</a>
+                <button id="notification-bell-mobile" class="w-full text-left block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3"><i data-lucide="bell" class="w-5 h-5"></i>Get Notifications</button>
                 <a href="#" class="nav-link block w-full text-center mt-4 px-3 py-3 rounded-md text-base font-semibold text-white bg-red-600 hover:bg-red-700 shadow-sm flex items-center justify-center gap-3" data-page="membership"><i data-lucide="user-plus" class="w-5 h-5"></i>Join</a>
             </div>
         </div>
@@ -201,6 +202,8 @@
         import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
         import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging.js";
         
+        // --- Start of Main Application Logic ---
+
         const firebaseConfig = {
             apiKey: "AIzaSyAuMJ6Ok2juoW8axxa8X-sNW0iklFjAOxo",
             authDomain: "nub-evening-society.firebaseapp.com",
@@ -1054,35 +1057,67 @@
             }
         };
 
-        document.getElementById('notification-bell').addEventListener('click', requestNotificationPermission);
-        
-        onMessage(messaging, (payload) => {
-            console.log('Message received. ', payload);
-            showToast(`New Notification: ${payload.notification.title}`);
+        // --- Cover Page Generator Logic ---
+        const coverPageForm = document.getElementById('coverPageForm');
+        let logoData = null;
+        const defaultLogoURL = "https://raw.githubusercontent.com/farhanmonsurfahim/assignment/main/nub.jpeg";
+        const defaultLogoImage = new Image();
+        defaultLogoImage.crossOrigin = "anonymous";
+        defaultLogoImage.onload = () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = defaultLogoImage.width;
+            canvas.height = defaultLogoImage.height;
+            ctx.drawImage(defaultLogoImage, 0, 0);
+            logoData = canvas.toDataURL('image/jpeg');
+        };
+        defaultLogoImage.src = defaultLogoURL;
+        const getCoverFormData = () => ({
+            universityName: document.getElementById('universityName').value, name: document.getElementById('name').value, studentId: document.getElementById('studentId').value, department: document.getElementById('department').value, semester: document.getElementById('semester').value, section: document.getElementById('section').value, assignmentTopic: document.getElementById('assignmentTopic').value, subject: document.getElementById('subject').value, courseTeacher: document.getElementById('courseTeacher').value, teacherDesignation: document.getElementById('teacherDesignation').value,
+            submissionDate: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
         });
-
-        document.getElementById('clear-subscribers-btn').addEventListener('click', () => {
-             showConfirmModal("Are you sure you want to delete ALL subscribers? This cannot be undone.", async () => {
-                try {
-                    const subsSnapshot = await getDocs(collection(db, 'subscribers'));
-                    const batch = writeBatch(db);
-                    subsSnapshot.docs.forEach(d => batch.delete(d.ref));
-                    await batch.commit();
-                    showToast("All subscribers have been cleared.");
-                } catch (error) {
-                    showToast("Failed to clear subscribers.", false);
-                    console.error(error);
-                }
-            });
-        });
-
-        document.getElementById('send-note-notification').addEventListener('click', () => {
-            showToast("This feature requires a backend function (Firebase Cloud Function) to be deployed.", false);
-        });
-        document.getElementById('send-notice-notification').addEventListener('click', () => {
-            showToast("This feature requires a backend function (Firebase Cloud Function) to be deployed.", false);
-        });
-
+        const generatePDF = () => {
+            const formData = getCoverFormData();
+            if (!logoData || !formData.name || !formData.studentId || !formData.department || !formData.semester || !formData.section || !formData.assignmentTopic || !formData.subject) {
+                if (typeof showToast === 'function') { showToast("Please fill in all required fields.", false); }
+                return;
+            }
+            if (typeof window.jspdf === 'undefined') { 
+                if (typeof showToast === 'function') { showToast('Error: PDF library not available.', false); }
+                return; 
+            }
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.setDrawColor(0); doc.setLineWidth(1); doc.rect(10, 10, doc.internal.pageSize.getWidth() - 20, doc.internal.pageSize.getHeight() - 20);
+            const logoSize = 60, logoX = (doc.internal.pageSize.getWidth() - logoSize) / 2;
+            doc.addImage(logoData, 'JPEG', logoX, 40, logoSize, logoSize);
+            doc.setFontSize(22); doc.text(formData.universityName, doc.internal.pageSize.getWidth() / 2, 120, { align: 'center' });
+            doc.setLineWidth(0.5); doc.line(30, 135, doc.internal.pageSize.getWidth() - 30, 135);
+            doc.setFontSize(26); doc.setFont('Helvetica', 'bold'); doc.text('ASSIGNMENT SUBMISSION', doc.internal.pageSize.getWidth() / 2, 150, { align: 'center' });
+            doc.setFontSize(18); doc.setFont('Helvetica', 'normal'); doc.text('Subject: ' + formData.subject, doc.internal.pageSize.getWidth() / 2, 160, { align: 'center' });
+            const boxWidth = 150, boxHeight = 15, boxX = (doc.internal.pageSize.getWidth() - boxWidth) / 2;
+            doc.setDrawColor(0); doc.setFillColor(255, 255, 255); doc.rect(boxX, 170, boxWidth, boxHeight, 'FD');
+            doc.setFontSize(14); doc.text(formData.assignmentTopic, doc.internal.pageSize.getWidth() / 2, 179, { align: 'center' });
+            doc.setLineWidth(0.5); doc.line(30, 190, doc.internal.pageSize.getWidth() - 30, 190);
+            doc.setFontSize(14);
+            const leftX = 30, rightX = doc.internal.pageSize.getWidth() / 2 + 10, spacing = 8;
+            let currentY = 210;
+            doc.setFont('Helvetica', 'bold'); doc.text('Submitted by:', leftX, currentY); doc.line(leftX, currentY + 1, leftX + 25, currentY + 1);
+            doc.setFont('Helvetica', 'normal'); currentY += spacing + 5;
+            doc.text('Name: ' + formData.name, leftX, currentY); doc.text('ID: ' + formData.studentId, leftX, currentY + spacing); doc.text('Semester/Section: ' + formData.semester + '-' + formData.section, leftX, currentY + 2 * spacing); doc.text('Dept. of ' + formData.department, leftX, currentY + 3 * spacing);
+            let finalY = currentY + 4 * spacing;
+            if (formData.courseTeacher) {
+                currentY = 210;
+                doc.setFont('Helvetica', 'bold'); doc.text('Submitted to:', rightX, currentY); doc.line(rightX, currentY + 1, rightX + 25, currentY + 1);
+                doc.setFont('Helvetica', 'normal'); currentY += spacing + 5;
+                doc.text('Teacher Name: ' + formData.courseTeacher, rightX, currentY);
+                if (formData.teacherDesignation) { doc.text('Designation: ' + formData.teacherDesignation, rightX, currentY + spacing); currentY += spacing; }
+            }
+            const finalYPos = Math.max(finalY, currentY) + 20;
+            doc.text('Date: ' + formData.submissionDate, doc.internal.pageSize.getWidth() / 2, finalYPos, { align: 'center' });
+            doc.save(formData.assignmentTopic.replace(/ /g, '_') + '_Cover_Page.pdf');
+        };
+        if (coverPageForm) coverPageForm.addEventListener('submit', (e) => { e.preventDefault(); generatePDF(); });
 
         window.addEventListener('popstate', (e) => {
             const pageId = (e.state && e.state.page) ? e.state.page : 'home';
@@ -1093,67 +1128,6 @@
             populateDropdowns();
             const initialPageId = window.location.hash.substring(1) || 'home';
             showPage(initialPageId, false);
-
-            const coverPageForm = document.getElementById('coverPageForm');
-            let logoData = null;
-            const defaultLogoURL = "https://raw.githubusercontent.com/farhanmonsurfahim/assignment/main/nub.jpeg";
-            const defaultLogoImage = new Image();
-            defaultLogoImage.crossOrigin = "anonymous";
-            defaultLogoImage.onload = () => {
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                canvas.width = defaultLogoImage.width;
-                canvas.height = defaultLogoImage.height;
-                ctx.drawImage(defaultLogoImage, 0, 0);
-                logoData = canvas.toDataURL('image/jpeg');
-            };
-            defaultLogoImage.src = defaultLogoURL;
-            const getCoverFormData = () => ({
-                universityName: document.getElementById('universityName').value, name: document.getElementById('name').value, studentId: document.getElementById('studentId').value, department: document.getElementById('department').value, semester: document.getElementById('semester').value, section: document.getElementById('section').value, assignmentTopic: document.getElementById('assignmentTopic').value, subject: document.getElementById('subject').value, courseTeacher: document.getElementById('courseTeacher').value, teacherDesignation: document.getElementById('teacherDesignation').value,
-                submissionDate: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
-            });
-            const generatePDF = () => {
-                const formData = getCoverFormData();
-                if (!logoData || !formData.name || !formData.studentId || !formData.department || !formData.semester || !formData.section || !formData.assignmentTopic || !formData.subject) {
-                    if (typeof showToast === 'function') { showToast("Please fill in all required fields.", false); }
-                    return;
-                }
-                if (typeof window.jspdf === 'undefined') { 
-                    if (typeof showToast === 'function') { showToast('Error: PDF library not available.', false); }
-                    return; 
-                }
-                const { jsPDF } = window.jspdf;
-                const doc = new jsPDF();
-                doc.setDrawColor(0); doc.setLineWidth(1); doc.rect(10, 10, doc.internal.pageSize.getWidth() - 20, doc.internal.pageSize.getHeight() - 20);
-                const logoSize = 60, logoX = (doc.internal.pageSize.getWidth() - logoSize) / 2;
-                doc.addImage(logoData, 'JPEG', logoX, 40, logoSize, logoSize);
-                doc.setFontSize(22); doc.text(formData.universityName, doc.internal.pageSize.getWidth() / 2, 120, { align: 'center' });
-                doc.setLineWidth(0.5); doc.line(30, 135, doc.internal.pageSize.getWidth() - 30, 135);
-                doc.setFontSize(26); doc.setFont('Helvetica', 'bold'); doc.text('ASSIGNMENT SUBMISSION', doc.internal.pageSize.getWidth() / 2, 150, { align: 'center' });
-                doc.setFontSize(18); doc.setFont('Helvetica', 'normal'); doc.text('Subject: ' + formData.subject, doc.internal.pageSize.getWidth() / 2, 160, { align: 'center' });
-                const boxWidth = 150, boxHeight = 15, boxX = (doc.internal.pageSize.getWidth() - boxWidth) / 2;
-                doc.setDrawColor(0); doc.setFillColor(255, 255, 255); doc.rect(boxX, 170, boxWidth, boxHeight, 'FD');
-                doc.setFontSize(14); doc.text(formData.assignmentTopic, doc.internal.pageSize.getWidth() / 2, 179, { align: 'center' });
-                doc.setLineWidth(0.5); doc.line(30, 190, doc.internal.pageSize.getWidth() - 30, 190);
-                doc.setFontSize(14);
-                const leftX = 30, rightX = doc.internal.pageSize.getWidth() / 2 + 10, spacing = 8;
-                let currentY = 210;
-                doc.setFont('Helvetica', 'bold'); doc.text('Submitted by:', leftX, currentY); doc.line(leftX, currentY + 1, leftX + 25, currentY + 1);
-                doc.setFont('Helvetica', 'normal'); currentY += spacing + 5;
-                doc.text('Name: ' + formData.name, leftX, currentY); doc.text('ID: ' + formData.studentId, leftX, currentY + spacing); doc.text('Semester/Section: ' + formData.semester + '-' + formData.section, leftX, currentY + 2 * spacing); doc.text('Dept. of ' + formData.department, leftX, currentY + 3 * spacing);
-                let finalY = currentY + 4 * spacing;
-                if (formData.courseTeacher) {
-                    currentY = 210;
-                    doc.setFont('Helvetica', 'bold'); doc.text('Submitted to:', rightX, currentY); doc.line(rightX, currentY + 1, rightX + 25, currentY + 1);
-                    doc.setFont('Helvetica', 'normal'); currentY += spacing + 5;
-                    doc.text('Teacher Name: ' + formData.courseTeacher, rightX, currentY);
-                    if (formData.teacherDesignation) { doc.text('Designation: ' + formData.teacherDesignation, rightX, currentY + spacing); currentY += spacing; }
-                }
-                const finalYPos = Math.max(finalY, currentY) + 20;
-                doc.text('Date: ' + formData.submissionDate, doc.internal.pageSize.getWidth() / 2, finalYPos, { align: 'center' });
-                doc.save(formData.assignmentTopic.replace(/ /g, '_') + '_Cover_Page.pdf');
-            };
-            if (coverPageForm) coverPageForm.addEventListener('submit', (e) => { e.preventDefault(); generatePDF(); });
         };
     </script>
 </body>
