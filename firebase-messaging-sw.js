@@ -1,8 +1,8 @@
-// Import and initialize the Firebase SDK for the service worker
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getMessaging, onBackgroundMessage } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-sw.js";
+// This line is essential. It imports the core Firebase App and Messaging scripts.
+importScripts("https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js");
+importScripts("https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js");
 
-// Your web app's Firebase configuration
+// Your web app's Firebase configuration.
 const firebaseConfig = {
     apiKey: "AIzaSyAuMJ6Ok2juoW8axxa8X-sNW0iklFjAOxo",
     authDomain: "nub-evening-society.firebaseapp.com",
@@ -14,21 +14,21 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const messaging = getMessaging(app);
+firebase.initializeApp(firebaseConfig);
+const messaging = firebase.messaging();
 
-// This function will be triggered when a notification is received while the app is in the background
-onBackgroundMessage(messaging, (payload) => {
+// This function will be triggered when a notification is received while the app is in the background.
+messaging.onBackgroundMessage((payload) => {
   console.log('[firebase-messaging-sw.js] Received background message ', payload);
   
-  // Customize the notification
+  // Customize the notification.
   const notificationTitle = payload.notification.title;
   const notificationOptions = {
     body: payload.notification.body,
-    icon: 'https://raw.githubusercontent.com/farhanmonsurfahim/assignment/main/nub.jpeg' // Using your NUB logo
+    icon: 'https://raw.githubusercontent.com/farhanmonsurfahim/assignment/main/nub.jpeg' // Using your NUB logo.
   };
 
-  // Display the notification
+  // Display the notification.
   self.registration.showNotification(notificationTitle, notificationOptions);
 });
 
