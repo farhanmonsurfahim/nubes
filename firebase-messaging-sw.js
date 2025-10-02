@@ -1,8 +1,6 @@
-// This file must be named firebase-messaging-sw.js and be placed in the root of your project.
-
-// Import and initialize the Firebase SDK
-importScripts("https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js");
-importScripts("https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js");
+// Import and initialize the Firebase SDK for the service worker
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getMessaging, onBackgroundMessage } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-sw.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,20 +14,21 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const messaging = getMessaging(app);
 
-// Retrieve an instance of Firebase Messaging so that it can handle background messages.
-const messaging = firebase.messaging();
+// This function will be triggered when a notification is received while the app is in the background
+onBackgroundMessage(messaging, (payload) => {
+  console.log('[firebase-messaging-sw.js] Received background message ', payload);
+  
+  // Customize the notification
+  const notificationTitle = payload.notification.title;
+  const notificationOptions = {
+    body: payload.notification.body,
+    icon: 'https://raw.githubusercontent.com/farhanmonsurfahim/assignment/main/nub.jpeg' // Using your NUB logo
+  };
 
-// If you would like to customize notifications that are received in the background (Web app is closed or not in browser focus) then you should implement this optional method.
-messaging.onBackgroundMessage(function(payload) {
-    console.log('[firebase-messaging-sw.js] Received background message ', payload);
-
-    const notificationTitle = payload.notification.title;
-    const notificationOptions = {
-        body: payload.notification.body,
-        icon: '/firebase-logo.png' // You can add a logo for your society here
-    };
-
-    self.registration.showNotification(notificationTitle, notificationOptions);
+  // Display the notification
+  self.registration.showNotification(notificationTitle, notificationOptions);
 });
+
