@@ -105,6 +105,7 @@
                         <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary-light transition-colors flex items-center gap-2" data-page="home"><i data-lucide="home" class="w-4 h-4"></i>Home</a>
                         <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary-light transition-colors flex items-center gap-2" data-page="notes"><i data-lucide="notebook-tabs" class="w-4 h-4"></i>Note</a>
                         <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary-light transition-colors flex items-center gap-2" data-page="blood"><i data-lucide="heart-pulse" class="w-4 h-4"></i>Blood</a>
+                        <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary-light transition-colors flex items-center gap-2" data-page="cr"><i data-lucide="contact" class="w-4 h-4"></i>CR</a>
                         <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary-light transition-colors flex items-center gap-2" data-page="coverpage"><i data-lucide="file-check-2" class="w-4 h-4"></i>Cover Page</a>
                         <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary-light transition-colors flex items-center gap-2" data-page="notices"><i data-lucide="megaphone" class="w-4 h-4"></i>Notices</a>
                         <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary-light transition-colors flex items-center gap-2" data-page="team"><i data-lucide="users" class="w-4 h-4"></i>Team</a>
@@ -126,6 +127,7 @@
                 <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3" data-page="home"><i data-lucide="home" class="w-5 h-5"></i>Home</a>
                 <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3" data-page="notes"><i data-lucide="notebook-tabs" class="w-5 h-5"></i>Note</a>
                 <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3" data-page="blood"><i data-lucide="heart-pulse" class="w-5 h-5"></i>Blood</a>
+                <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3" data-page="cr"><i data-lucide="contact" class="w-5 h-5"></i>CR</a>
                 <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3" data-page="coverpage"><i data-lucide="file-check-2" class="w-5 h-5"></i>Cover Page</a>
                 <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3" data-page="notices"><i data-lucide="megaphone" class="w-5 h-5"></i>Notices</a>
                 <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3" data-page="team"><i data-lucide="users" class="w-5 h-5"></i>Team</a>
@@ -142,11 +144,8 @@
                 <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Your central hub for academic resources, community support, and university updates.</p>
             </div>
             
-            <!-- Gallery Slider -->
             <div id="gallery-slider" class="reveal slider-container bg-gray-900 rounded-2xl shadow-lg w-full aspect-video md:aspect-[2.4/1] max-h-[500px] relative hidden">
-                <div id="gallery-wrapper" class="slider-wrapper h-full">
-                    <!-- Images will be injected here -->
-                </div>
+                <div id="gallery-wrapper" class="slider-wrapper h-full"></div>
                 <button id="prev-slide" class="slider-nav left-2 md:left-4 text-white bg-black/30 hover:bg-black/50 p-2 rounded-full transition"><i data-lucide="chevron-left"></i></button>
                 <button id="next-slide" class="slider-nav right-2 md:right-4 text-white bg-black/30 hover:bg-black/50 p-2 rounded-full transition"><i data-lucide="chevron-right"></i></button>
             </div>
@@ -154,278 +153,50 @@
             <div class="reveal">
                 <h2 class="text-2xl md:text-3xl font-bold mb-8 flex items-center justify-center gap-3 text-gray-800"><i data-lucide="compass" class="text-primary"></i> Explore Our Sections</h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    <a href="#" data-page="notes" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform">
-                        <i data-lucide="notebook-tabs" class="w-12 h-12 mx-auto text-primary mb-3"></i><h4 class="font-bold text-lg">Note Sharing</h4>
-                    </a>
-                    <a href="#" data-page="blood" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform">
-                        <i data-lucide="heart-pulse" class="w-12 h-12 mx-auto text-red-500 mb-3"></i><h4 class="font-bold text-lg">Blood Bank</h4>
-                    </a>
-                    <a href="#" data-page="coverpage" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform">
-                        <i data-lucide="file-check-2" class="w-12 h-12 mx-auto text-accent mb-3"></i><h4 class="font-bold text-lg">Cover Page</h4>
-                    </a>
-                     <a href="#" data-page="notices" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform">
-                        <i data-lucide="megaphone" class="w-12 h-12 mx-auto text-yellow-500 mb-3"></i><h4 class="font-bold text-lg">Notices</h4>
-                    </a>
-                    <a href="#" data-page="team" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform">
-                        <i data-lucide="users" class="w-12 h-12 mx-auto text-green-500 mb-3"></i><h4 class="font-bold text-lg">Our Team</h4>
-                    </a>
-                     <a href="#" data-page="membership" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform">
-                        <i data-lucide="user-plus" class="w-12 h-12 mx-auto text-blue-500 mb-3"></i><h4 class="font-bold text-lg">Join Us</h4>
-                    </a>
+                    <a href="#" data-page="notes" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform"><i data-lucide="notebook-tabs" class="w-12 h-12 mx-auto text-primary mb-3"></i><h4 class="font-bold text-lg">Note Sharing</h4></a>
+                    <a href="#" data-page="blood" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform"><i data-lucide="heart-pulse" class="w-12 h-12 mx-auto text-red-500 mb-3"></i><h4 class="font-bold text-lg">Blood Bank</h4></a>
+                    <a href="#" data-page="cr" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform"><i data-lucide="contact" class="w-12 h-12 mx-auto text-indigo-500 mb-3"></i><h4 class="font-bold text-lg">CR Info</h4></a>
+                    <a href="#" data-page="coverpage" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform"><i data-lucide="file-check-2" class="w-12 h-12 mx-auto text-accent mb-3"></i><h4 class="font-bold text-lg">Cover Page</h4></a>
+                    <a href="#" data-page="notices" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform"><i data-lucide="megaphone" class="w-12 h-12 mx-auto text-yellow-500 mb-3"></i><h4 class="font-bold text-lg">Notices</h4></a>
+                    <a href="#" data-page="team" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform"><i data-lucide="users" class="w-12 h-12 mx-auto text-green-500 mb-3"></i><h4 class="font-bold text-lg">Our Team</h4></a>
+                    <a href="#" data-page="membership" class="nav-link block text-center bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all transform"><i data-lucide="user-plus" class="w-12 h-12 mx-auto text-blue-500 mb-3"></i><h4 class="font-bold text-lg">Join Us</h4></a>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                <div class="reveal">
-                    <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-gray-800"><i data-lucide="megaphone" class="text-primary"></i>Latest Notices</h2>
-                    <div id="latest-notices-list" class="space-y-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
-                        <div class="loader-container flex justify-center py-8"><div class="admin-loader"></div></div>
-                    </div>
-                </div>
-                <div class="reveal">
-                    <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-gray-800"><i data-lucide="notebook-tabs" class="text-primary"></i>Latest Notes</h2>
-                    <div id="latest-notes-list" class="space-y-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
-                        <div class="loader-container flex justify-center py-8"><div class="admin-loader"></div></div>
-                    </div>
-                </div>
+                <div class="reveal"><h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-gray-800"><i data-lucide="megaphone" class="text-primary"></i>Latest Notices</h2><div id="latest-notices-list" class="space-y-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-200"><div class="loader-container flex justify-center py-8"><div class="admin-loader"></div></div></div></div>
+                <div class="reveal"><h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-gray-800"><i data-lucide="notebook-tabs" class="text-primary"></i>Latest Notes</h2><div id="latest-notes-list" class="space-y-4 bg-white p-6 rounded-2xl shadow-lg border border-gray-200"><div class="loader-container flex justify-center py-8"><div class="admin-loader"></div></div></div></div>
             </div>
         </div>
 
-        <div id="notes" class="page">
-             <div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="book-marked" class="text-accent"></i>Note Sharing</h2>
-                <div id="note-sharing-content">
-                    <div id="subject-list-view">
-                        <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
-                            <select id="subject-dept-filter" class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"></select>
-                            <select id="subject-semester-filter" class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"></select>
-                        </div>
-                        <div id="subject-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-                    </div>
-                    <div id="notes-list-view" class="hidden">
-                        <button id="back-to-subjects" class="mb-6 bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 flex items-center gap-2 transition font-semibold">
-                            <i data-lucide="arrow-left" class="w-4 h-4"></i> Back
-                        </button>
-                        <h3 id="notes-subject-title" class="text-2xl md:text-3xl font-bold mb-6"></h3>
-                        <div id="notes-list" class="space-y-4"></div>
-                    </div>
-                </div>
-                <div class="mt-12 border-t pt-8">
-                    <h3 class="text-2xl font-semibold mb-6 text-center">Share a Note</h3>
-                    <form id="add-note-form" class="max-w-xl mx-auto space-y-4">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <select id="note-share-department" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select>
-                            <select id="note-share-semester" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select>
-                        </div>
-                        <input type="text" id="uploader-name" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
-                        <select id="note-subject" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition" disabled>
-                            <option value="">Select Department & Semester First</option>
-                        </select>
-                        <input type="text" id="note-topic" placeholder="Note Topic (e.g., Midterm Suggestion)" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
-                        <input type="url" id="gdrive-link" placeholder="Paste your Google Drive file link here..." required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
-                        <p class="text-sm text-red-600 font-semibold flex items-start gap-2 bg-red-100 p-3 rounded-lg"><i data-lucide="alert-triangle" class="w-5 h-5 flex-shrink-0 mt-0.5"></i><span><strong class="font-bold">Important:</strong> Please share your file in Google Drive with <strong class="font-bold">"Anyone with the link"</strong> or it will not be accessible to others.</span></p>
-                        <button type="submit" class="w-full bg-red-600 text-white font-semibold px-4 py-3 rounded-lg hover:bg-red-700 shadow-sm transition-transform hover:scale-105 flex items-center justify-center gap-2">
-                            <span class="btn-text flex items-center justify-center gap-2"><i data-lucide="send" class="w-5 h-5"></i>Submit Note</span>
-                            <div class="loader hidden"></div>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
+        <div id="notes" class="page"><div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200"><h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="book-marked" class="text-accent"></i>Note Sharing</h2><div id="note-sharing-content"><div id="subject-list-view"><div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto"><select id="subject-dept-filter" class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"></select><select id="subject-semester-filter" class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"></select></div><div id="subject-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div></div><div id="notes-list-view" class="hidden"><button id="back-to-subjects" class="mb-6 bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 flex items-center gap-2 transition font-semibold"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back</button><h3 id="notes-subject-title" class="text-2xl md:text-3xl font-bold mb-6"></h3><div id="notes-list" class="space-y-4"></div></div></div><div class="mt-12 border-t pt-8"><h3 class="text-2xl font-semibold mb-6 text-center">Share a Note</h3><form id="add-note-form" class="max-w-xl mx-auto space-y-4"><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><select id="note-share-department" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select><select id="note-share-semester" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select></div><input type="text" id="uploader-name" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><select id="note-subject" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition" disabled><option value="">Select Department & Semester First</option></select><input type="text" id="note-topic" placeholder="Note Topic (e.g., Midterm Suggestion)" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><input type="url" id="gdrive-link" placeholder="Paste your Google Drive file link here..." required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><p class="text-sm text-red-600 font-semibold flex items-start gap-2 bg-red-100 p-3 rounded-lg"><i data-lucide="alert-triangle" class="w-5 h-5 flex-shrink-0 mt-0.5"></i><span><strong class="font-bold">Important:</strong> Please share your file in Google Drive with <strong class="font-bold">"Anyone with the link"</strong> or it will not be accessible to others.</span></p><button type="submit" class="w-full bg-red-600 text-white font-semibold px-4 py-3 rounded-lg hover:bg-red-700 shadow-sm transition-transform hover:scale-105 flex items-center justify-center gap-2"><span class="btn-text flex items-center justify-center gap-2"><i data-lucide="send" class="w-5 h-5"></i>Submit Note</span><div class="loader hidden"></div></button></form></div></div></div>
 
-        <div id="blood" class="page">
-            <div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200">
-                 <h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="heart-pulse" class="text-red-500"></i>Blood Bank</h2>
-                 <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
-                    <select id="blood-group-filter" class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm">
-                        <option value="">Filter by Blood Group</option><option value="A+">A+</option><option value="A-">A-</option><option value="B+">B+</option><option value="B-">B-</option><option value="AB+">AB+</option><option value="AB-">AB-</option><option value="O+">O+</option><option value="O-">O-</option>
-                    </select>
-                    <select id="blood-dept-filter" class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"></select>
-                 </div>
-                 <div class="border rounded-lg overflow-hidden">
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Name</th>
-                                    <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Blood Group</th>
-                                    <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Department</th>
-                                    <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Contact</th>
-                                    <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Address</th>
-                                </tr>
-                            </thead>
-                            <tbody id="donors-list" class="bg-white divide-y divide-gray-200"></tbody>
-                        </table>
-                    </div>
-                 </div>
-                 <div class="border-t pt-8 mt-8">
-                    <h3 class="text-2xl font-semibold mb-6 text-center">Become a Donor</h3>
-                    <form id="add-donor-form" class="max-w-xl mx-auto space-y-4">
-                        <input type="text" id="donor-name" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
-                        <select id="blood-group" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
-                            <option value="">Select Blood Group</option><option value="A+">A+</option><option value="A-">A-</option><option value="B+">B+</option><option value="B-">B-</option><option value="AB+">AB+</option><option value="AB-">AB-</option><option value="O+">O+</option><option value="O-">O-</option>
-                        </select>
-                        <select id="donor-department" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select>
-                        <input type="text" id="donor-contact" placeholder="Contact Number" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
-                        <input type="text" id="donor-address" placeholder="Address" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
-                        <button type="submit" class="w-full bg-red-600 text-white font-semibold px-4 py-3 rounded-lg hover:bg-red-700 shadow-sm transition-transform hover:scale-105 flex items-center justify-center gap-2">
-                            <span class="btn-text flex items-center justify-center gap-2"><i data-lucide="user-check" class="w-5 h-5"></i>Register as Donor</span>
-                            <div class="loader hidden"></div>
-                        </button>
-                    </form>
-                 </div>
-            </div>
-        </div>
+        <div id="blood" class="page"><div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200"><h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="heart-pulse" class="text-red-500"></i>Blood Bank</h2><div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto"><select id="blood-group-filter" class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"><option value="">Filter by Blood Group</option><option value="A+">A+</option><option value="A-">A-</option><option value="B+">B+</option><option value="B-">B-</option><option value="AB+">AB+</option><option value="AB-">AB-</option><option value="O+">O+</option><option value="O-">O-</option></select><select id="blood-dept-filter" class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"></select></div><div class="border rounded-lg overflow-hidden"><div class="overflow-x-auto"><table class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Name</th><th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Blood Group</th><th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Department</th><th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Contact</th><th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Address</th></tr></thead><tbody id="donors-list" class="bg-white divide-y divide-gray-200"></tbody></table></div></div><div class="border-t pt-8 mt-8"><h3 class="text-2xl font-semibold mb-6 text-center">Become a Donor</h3><form id="add-donor-form" class="max-w-xl mx-auto space-y-4"><input type="text" id="donor-name" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><select id="blood-group" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><option value="">Select Blood Group</option><option value="A+">A+</option><option value="A-">A-</option><option value="B+">B+</option><option value="B-">B-</option><option value="AB+">AB+</option><option value="AB-">AB-</option><option value="O+">O+</option><option value="O-">O-</option></select><select id="donor-department" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select><input type="text" id="donor-contact" placeholder="Contact Number" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><input type="text" id="donor-address" placeholder="Address" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><button type="submit" class="w-full bg-red-600 text-white font-semibold px-4 py-3 rounded-lg hover:bg-red-700 shadow-sm transition-transform hover:scale-105 flex items-center justify-center gap-2"><span class="btn-text flex items-center justify-center gap-2"><i data-lucide="user-check" class="w-5 h-5"></i>Register as Donor</span><div class="loader hidden"></div></button></form></div></div></div>
 
-        <div id="coverpage" class="page">
-             <div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="file-check-2" class="text-accent"></i>Assignment Cover Page Generator</h2>
-                <div class="max-w-4xl mx-auto">
-                     <div class="logo-container">
-                        <img id="logo" src="https://raw.githubusercontent.com/farhanmonsurfahim/assignment/main/nub.jpeg" alt="University Logo">
-                    </div>
-                    <form id="coverPageForm" class="w-full space-y-4">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="cover-form-group"><label for="universityName" class="block text-sm">University Name</label><input type="text" id="universityName" value="Northern University Bangladesh" readonly></div>
-                            <div class="cover-form-group"><label for="name" class="block text-sm">Student Name</label><input type="text" id="name" placeholder="Your Name" required></div>
-                            <div class="cover-form-group"><label for="studentId" class="block text-sm">Student ID</label><input type="text" id="studentId" placeholder="e.g., 123456789" required></div>
-                            <div class="cover-form-group"><label for="department" class="block text-sm">Department</label><input type="text" id="department" placeholder="e.g., Computer Science and Engineering" required></div>
-                            <div class="cover-form-group"><label for="semester" class="block text-sm">Semester</label><input type="text" id="semester" placeholder="e.g., 5th" required></div>
-                            <div class="cover-form-group"><label for="section" class="block text-sm">Section</label><input type="text" id="section" placeholder="e.g., A" required></div>
-                            <div class="cover-form-group md:col-span-2"><label for="assignmentTopic" class="block text-sm">Assignment Topic</label><input type="text" id="assignmentTopic" placeholder="e.g., Data Structures and Algorithms" required></div>
-                            <div class="cover-form-group md:col-span-2"><label for="subject" class="block text-sm">Subject</label><input type="text" id="subject" placeholder="e.g., CSC 201: Data Structures" required></div>
-                            <div class="cover-form-group"><label for="courseTeacher" class="block text-sm">Course Teacher Name</label><input type="text" id="courseTeacher" placeholder="e.g., Dr. Jane Doe" required></div>
-                            <div class="cover-form-group"><label for="teacherDesignation" class="block text-sm">Teacher Designation</label><input type="text" id="teacherDesignation" placeholder="e.g., Assistant Professor" required></div>
-                        </div>
-                        <div class="flex justify-center pt-6">
-                            <button type="submit" class="bg-red-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-red-700 shadow-md transition-all transform hover:scale-105 flex items-center justify-center gap-2">
-                                <i data-lucide="download" class="w-5 h-5"></i>Generate PDF
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+        <div id="cr" class="page"><div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200"><h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="contact" class="text-indigo-500"></i>Class Representatives</h2><div class="mb-8 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto"><select id="cr-dept-filter" class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"></select><select id="cr-semester-filter" class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"></select><input type="text" id="cr-section-filter" placeholder="Filter by Section..." class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"></div><div id="cr-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div><div class="border-t pt-8 mt-12"><h3 class="text-2xl font-semibold mb-6 text-center">Submit CR Information</h3><form id="add-cr-form" class="max-w-xl mx-auto space-y-4"><p class="text-sm text-yellow-800 font-semibold flex items-start gap-2 bg-yellow-100 p-3 rounded-lg"><i data-lucide="alert-triangle" class="w-5 h-5 flex-shrink-0 mt-0.5"></i><span>Only submit this form if you are an existing Class Representative (CR). All submissions require admin approval.</span></p><input type="text" id="cr-name" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><select id="cr-department" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select><select id="cr-semester" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select><input type="text" id="cr-section" placeholder="Section (e.g., A)" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><input type="tel" id="cr-phone" placeholder="Phone Number" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><input type="url" id="cr-facebook" placeholder="Facebook Profile Link" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><button type="submit" class="w-full bg-red-600 text-white font-semibold px-4 py-3 rounded-lg hover:bg-red-700 shadow-sm transition-transform hover:scale-105 flex items-center justify-center gap-2"><span class="btn-text flex items-center justify-center gap-2"><i data-lucide="send" class="w-5 h-5"></i>Submit Information</span><div class="loader hidden"></div></button></form></div></div></div>
 
-        <div id="notices" class="page">
-            <div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="clipboard-list" class="text-accent"></i>Notices</h2>
-                <div class="mb-8 max-w-2xl mx-auto">
-                    <input type="text" id="notice-search" placeholder="Search notices by title or content..." class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm">
-                </div>
-                <div id="notices-list" class="space-y-8 max-w-4xl mx-auto"></div>
-            </div>
-        </div>
+        <div id="coverpage" class="page"><div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200"><h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="file-check-2" class="text-accent"></i>Assignment Cover Page Generator</h2><div class="max-w-4xl mx-auto"><div class="logo-container"><img id="logo" src="https://raw.githubusercontent.com/farhanmonsurfahim/assignment/main/nub.jpeg" alt="University Logo"></div><form id="coverPageForm" class="w-full space-y-4"><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div class="cover-form-group"><label for="universityName" class="block text-sm">University Name</label><input type="text" id="universityName" value="Northern University Bangladesh" readonly></div><div class="cover-form-group"><label for="name" class="block text-sm">Student Name</label><input type="text" id="name" placeholder="Your Name" required></div><div class="cover-form-group"><label for="studentId" class="block text-sm">Student ID</label><input type="text" id="studentId" placeholder="e.g., 123456789" required></div><div class="cover-form-group"><label for="department" class="block text-sm">Department</label><input type="text" id="department" placeholder="e.g., Computer Science and Engineering" required></div><div class="cover-form-group"><label for="semester" class="block text-sm">Semester</label><input type="text" id="semester" placeholder="e.g., 5th" required></div><div class="cover-form-group"><label for="section" class="block text-sm">Section</label><input type="text" id="section" placeholder="e.g., A" required></div><div class="cover-form-group md:col-span-2"><label for="assignmentTopic" class="block text-sm">Assignment Topic</label><input type="text" id="assignmentTopic" placeholder="e.g., Data Structures and Algorithms" required></div><div class="cover-form-group md:col-span-2"><label for="subject" class="block text-sm">Subject</label><input type="text" id="subject" placeholder="e.g., CSC 201: Data Structures" required></div><div class="cover-form-group"><label for="courseTeacher" class="block text-sm">Course Teacher Name</label><input type="text" id="courseTeacher" placeholder="e.g., Dr. Jane Doe" required></div><div class="cover-form-group"><label for="teacherDesignation" class="block text-sm">Teacher Designation</label><input type="text" id="teacherDesignation" placeholder="e.g., Assistant Professor" required></div></div><div class="flex justify-center pt-6"><button type="submit" class="bg-red-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-red-700 shadow-md transition-all transform hover:scale-105 flex items-center justify-center gap-2"><i data-lucide="download" class="w-5 h-5"></i>Generate PDF</button></div></form></div></div></div>
 
-        <div id="team" class="page">
-            <div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="users" class="text-accent"></i>Our Team</h2>
-                <div id="team-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"></div>
-            </div>
-        </div>
+        <div id="notices" class="page"><div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200"><h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="clipboard-list" class="text-accent"></i>Notices</h2><div class="mb-8 max-w-2xl mx-auto"><input type="text" id="notice-search" placeholder="Search notices by title or content..." class="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition shadow-sm"></div><div id="notices-list" class="space-y-8 max-w-4xl mx-auto"></div></div></div>
 
-        <div id="membership" class="page">
-             <div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200 max-w-2xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-6 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="user-plus" class="text-accent"></i>Request Membership</h2>
-                <form id="membership-request-form" class="space-y-4">
-                    <input type="text" id="req-name" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
-                    <input type="text" id="req-student-id" placeholder="Student ID" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
-                    <select id="req-department" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select>
-                    <input type="text" id="req-section" placeholder="Section" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
-                    <input type="text" id="req-semester" placeholder="Semester" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition">
-                    <button type="submit" class="w-full bg-red-600 font-semibold text-white px-4 py-3 rounded-lg hover:bg-red-700 shadow-sm transition-transform hover:scale-105 flex items-center justify-center gap-2">
-                        <span class="btn-text flex items-center justify-center gap-2"><i data-lucide="file-plus-2" class="w-5 h-5"></i>Request Membership</span>
-                        <div class="loader hidden"></div>
-                    </button>
-                </form>
-            </div>
-        </div>
+        <div id="team" class="page"><div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200"><h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="users" class="text-accent"></i>Our Team</h2><div id="team-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"></div></div></div>
+
+        <div id="membership" class="page"><div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200 max-w-2xl mx-auto"><h2 class="text-3xl md:text-4xl font-extrabold mb-6 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="user-plus" class="text-accent"></i>Request Membership</h2><form id="membership-request-form" class="space-y-4"><input type="text" id="req-name" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><input type="text" id="req-student-id" placeholder="Student ID" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><select id="req-department" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select><input type="text" id="req-section" placeholder="Section" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><input type="text" id="req-semester" placeholder="Semester" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><button type="submit" class="w-full bg-red-600 font-semibold text-white px-4 py-3 rounded-lg hover:bg-red-700 shadow-sm transition-transform hover:scale-105 flex items-center justify-center gap-2"><span class="btn-text flex items-center justify-center gap-2"><i data-lucide="file-plus-2" class="w-5 h-5"></i>Request Membership</span><div class="loader hidden"></div></button></form></div></div>
         
-        <div id="admin" class="page">
-            <h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="sliders-horizontal" class="text-accent"></i>Admin Panel</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-                    <h3 class="text-xl font-semibold mb-4">Manage Subjects</h3>
-                    <form id="add-subject-form" class="space-y-4 mb-4">
-                        <input type="text" id="new-subject-name" placeholder="New Subject Name" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition">
-                        <select id="new-subject-department" required class="w-full px-4 py-2 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-accent transition"></select>
-                        <select id="new-subject-semester" required class="w-full px-4 py-2 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-accent transition"></select>
-                        <button type="submit" class="w-full bg-red-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition flex items-center justify-center gap-2">
-                            <span class="btn-text flex items-center justify-center gap-2"><i data-lucide="plus" class="w-5 h-5"></i>Add Subject</span>
-                            <div class="admin-loader hidden"></div>
-                        </button>
-                    </form>
-                    <div id="admin-subjects-list" class="space-y-2"></div>
-                </div>
-
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-                    <h3 class="text-xl font-semibold mb-4">Manage Gallery</h3>
-                    <div class="space-y-6">
-                        <!-- Image Slot 1 -->
-                        <div class="gallery-slot" data-slot="1">
-                            <img id="gallery-preview-1" class="w-full h-32 object-cover rounded-lg bg-gray-200 mb-2" src="https://placehold.co/600x400/cccccc/ffffff?text=Slot+1">
-                            <input type="file" id="gallery-upload-1" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100">
-                            <button class="save-gallery-btn mt-2 w-full bg-blue-600 text-white text-sm font-semibold px-3 py-1.5 rounded-lg hover:bg-blue-700 transition flex items-center justify-center">
-                                <span class="btn-text">Save Image 1</span>
-                                <div class="admin-loader hidden" style="border-top-color: white; width: 16px; height: 16px;"></div>
-                            </button>
-                        </div>
-                         <!-- Image Slot 2 -->
-                        <div class="gallery-slot" data-slot="2">
-                            <img id="gallery-preview-2" class="w-full h-32 object-cover rounded-lg bg-gray-200 mb-2" src="https://placehold.co/600x400/cccccc/ffffff?text=Slot+2">
-                            <input type="file" id="gallery-upload-2" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100">
-                            <button class="save-gallery-btn mt-2 w-full bg-blue-600 text-white text-sm font-semibold px-3 py-1.5 rounded-lg hover:bg-blue-700 transition flex items-center justify-center">
-                                <span class="btn-text">Save Image 2</span>
-                                <div class="admin-loader hidden" style="border-top-color: white; width: 16px; height: 16px;"></div>
-                            </button>
-                        </div>
-                         <!-- Image Slot 3 -->
-                        <div class="gallery-slot" data-slot="3">
-                            <img id="gallery-preview-3" class="w-full h-32 object-cover rounded-lg bg-gray-200 mb-2" src="https://placehold.co/600x400/cccccc/ffffff?text=Slot+3">
-                            <input type="file" id="gallery-upload-3" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100">
-                            <button class="save-gallery-btn mt-2 w-full bg-blue-600 text-white text-sm font-semibold px-3 py-1.5 rounded-lg hover:bg-blue-700 transition flex items-center justify-center">
-                                <span class="btn-text">Save Image 3</span>
-                                <div class="admin-loader hidden" style="border-top-color: white; width: 16px; height: 16px;"></div>
-                            </button>
-                        </div>
-                    </div>
-                     <p class="text-xs text-red-600 font-semibold flex items-center gap-1 mt-4"><i data-lucide="alert-triangle" class="w-4 h-4"></i>Important: Images must be small (under 750 KB).</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Notes</h3><div class="flex gap-2 mb-4"><select id="admin-note-subject-filter" class="flex-grow px-4 py-2 border rounded-lg bg-white focus:ring-2 focus:ring-accent transition"></select></div><div id="admin-notes-list" class="space-y-2"></div></div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Blood Donors</h3><div id="admin-donors-list" class="space-y-2"></div></div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Notices</h3><form id="add-notice-form" class="space-y-4 mb-4"><input type="text" id="notice-title" placeholder="Notice Title" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"><textarea id="notice-desc" placeholder="Notice Description" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"></textarea><div><label for="notice-image-upload" class="block text-sm font-medium text-gray-700">Notice Image (optional)</label><input type="file" id="notice-image-upload" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100"></div><p class="text-xs text-red-600 font-semibold flex items-center gap-1"><i data-lucide="alert-triangle" class="w-4 h-4"></i>Important: Images must be small (under 750 KB).</p><button type="submit" class="w-full bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 flex items-center justify-center gap-2 font-semibold transition"><span class="btn-text">Post Notice</span><div class="admin-loader hidden"></div></button></form><div id="admin-notices-list" class="space-y-2"></div></div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Team</h3><form id="add-team-member-form" class="space-y-4 mb-4"><input type="text" id="member-name" placeholder="Member Name" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"><input type="text" id="member-title" placeholder="Member Title (e.g., President)" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"><div><label for="member-image-upload" class="block text-sm font-medium text-gray-700">Profile Image</label><input type="file" id="member-image-upload" accept="image/*" required class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100"></div><p class="text-xs text-red-600 font-semibold flex items-center gap-1"><i data-lucide="alert-triangle" class="w-4 h-4"></i>Important: Images must be small (under 750 KB).</p><button type="submit" class="w-full bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 flex items-center justify-center gap-2 font-semibold transition"><span class="btn-text">Add Member</span><div class="admin-loader hidden"></div></button></form><div id="admin-team-list" class="space-y-2"></div></div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Membership Requests</h3><div id="admin-requests-list" class="space-y-2"></div></div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 lg:col-span-2"><h3 class="text-xl font-semibold mb-4">Settings</h3><form id="settings-form" class="space-y-4"><label class="block"><span class="text-sm font-medium">Facebook Page Link</span><input type="url" id="facebook-link" required class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"></label><label class="block"><span class="text-sm font-medium">WhatsApp Group Link</span><input type="url" id="whatsapp-link" required class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"></label><button type="submit" class="bg-red-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-red-700 transition flex items-center justify-center gap-2"><span class="btn-text flex items-center justify-center gap-2"><i data-lucide="save" class="w-5 h-5"></i>Save Settings</span><div class="loader hidden"></div></button></form></div>
-            </div>
-        </div>
+        <div id="admin" class="page"><h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="sliders-horizontal" class="text-accent"></i>Admin Panel</h2><div class="grid grid-cols-1 lg:grid-cols-2 gap-8"><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Subjects</h3><form id="add-subject-form" class="space-y-4 mb-4"><input type="text" id="new-subject-name" placeholder="New Subject Name" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"><select id="new-subject-department" required class="w-full px-4 py-2 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-accent transition"></select><select id="new-subject-semester" required class="w-full px-4 py-2 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-accent transition"></select><button type="submit" class="w-full bg-red-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition flex items-center justify-center gap-2"><span class="btn-text flex items-center justify-center gap-2"><i data-lucide="plus" class="w-5 h-5"></i>Add Subject</span><div class="admin-loader hidden"></div></button></form><div id="admin-subjects-list" class="space-y-2"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Gallery</h3><div class="space-y-6"><div class="gallery-slot" data-slot="1"><img id="gallery-preview-1" class="w-full h-32 object-cover rounded-lg bg-gray-200 mb-2" src="https://placehold.co/600x400/cccccc/ffffff?text=Slot+1"><input type="file" id="gallery-upload-1" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100"><button class="save-gallery-btn mt-2 w-full bg-blue-600 text-white text-sm font-semibold px-3 py-1.5 rounded-lg hover:bg-blue-700 transition flex items-center justify-center"><span class="btn-text">Save Image 1</span><div class="admin-loader hidden" style="border-top-color: white; width: 16px; height: 16px;"></div></button></div><div class="gallery-slot" data-slot="2"><img id="gallery-preview-2" class="w-full h-32 object-cover rounded-lg bg-gray-200 mb-2" src="https://placehold.co/600x400/cccccc/ffffff?text=Slot+2"><input type="file" id="gallery-upload-2" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100"><button class="save-gallery-btn mt-2 w-full bg-blue-600 text-white text-sm font-semibold px-3 py-1.5 rounded-lg hover:bg-blue-700 transition flex items-center justify-center"><span class="btn-text">Save Image 2</span><div class="admin-loader hidden" style="border-top-color: white; width: 16px; height: 16px;"></div></button></div><div class="gallery-slot" data-slot="3"><img id="gallery-preview-3" class="w-full h-32 object-cover rounded-lg bg-gray-200 mb-2" src="https://placehold.co/600x400/cccccc/ffffff?text=Slot+3"><input type="file" id="gallery-upload-3" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100"><button class="save-gallery-btn mt-2 w-full bg-blue-600 text-white text-sm font-semibold px-3 py-1.5 rounded-lg hover:bg-blue-700 transition flex items-center justify-center"><span class="btn-text">Save Image 3</span><div class="admin-loader hidden" style="border-top-color: white; width: 16px; height: 16px;"></div></button></div></div><p class="text-xs text-red-600 font-semibold flex items-center gap-1 mt-4"><i data-lucide="alert-triangle" class="w-4 h-4"></i>Important: Images must be small (under 750 KB).</p></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Notes</h3><div class="flex gap-2 mb-4"><select id="admin-note-subject-filter" class="flex-grow px-4 py-2 border rounded-lg bg-white focus:ring-2 focus:ring-accent transition"></select></div><div id="admin-notes-list" class="space-y-2"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Blood Donors</h3><div id="admin-donors-list" class="space-y-2"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Notices</h3><form id="add-notice-form" class="space-y-4 mb-4"><input type="text" id="notice-title" placeholder="Notice Title" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"><textarea id="notice-desc" placeholder="Notice Description" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"></textarea><div><label for="notice-image-upload" class="block text-sm font-medium text-gray-700">Notice Image (optional)</label><input type="file" id="notice-image-upload" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100"></div><p class="text-xs text-red-600 font-semibold flex items-center gap-1"><i data-lucide="alert-triangle" class="w-4 h-4"></i>Important: Images must be small (under 750 KB).</p><button type="submit" class="w-full bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 flex items-center justify-center gap-2 font-semibold transition"><span class="btn-text">Post Notice</span><div class="admin-loader hidden"></div></button></form><div id="admin-notices-list" class="space-y-2"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Team</h3><form id="add-team-member-form" class="space-y-4 mb-4"><input type="text" id="member-name" placeholder="Member Name" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"><input type="text" id="member-title" placeholder="Member Title (e.g., President)" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"><div><label for="member-image-upload" class="block text-sm font-medium text-gray-700">Profile Image</label><input type="file" id="member-image-upload" accept="image/*" required class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100"></div><p class="text-xs text-red-600 font-semibold flex items-center gap-1"><i data-lucide="alert-triangle" class="w-4 h-4"></i>Important: Images must be small (under 750 KB).</p><button type="submit" class="w-full bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 flex items-center justify-center gap-2 font-semibold transition"><span class="btn-text">Add Member</span><div class="admin-loader hidden"></div></button></form><div id="admin-team-list" class="space-y-2"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Membership Requests</h3><div id="admin-requests-list" class="space-y-2"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 lg:col-span-2"><h3 class="text-xl font-semibold mb-4">Manage CRs</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div><h4 class="font-bold mb-2">Pending Requests</h4><div id="admin-cr-pending-list" class="space-y-2"></div></div><div><h4 class="font-bold mb-2">Approved CRs</h4><div id="admin-cr-approved-list" class="space-y-2"></div></div></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 lg:col-span-2"><h3 class="text-xl font-semibold mb-4">Settings</h3><form id="settings-form" class="space-y-4"><label class="block"><span class="text-sm font-medium">Facebook Page Link</span><input type="url" id="facebook-link" required class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"></label><label class="block"><span class="text-sm font-medium">WhatsApp Group Link</span><input type="url" id="whatsapp-link" required class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"></label><button type="submit" class="bg-red-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-red-700 transition flex items-center justify-center gap-2"><span class="btn-text flex items-center justify-center gap-2"><i data-lucide="save" class="w-5 h-5"></i>Save Settings</span><div class="loader hidden"></div></button></form></div></div></div>
     </main>
 
-    <footer class="bg-white border-t mt-12">
-        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-600">
-            <p class="font-semibold text-gray-800">&copy; 2024 NUB Evening Society. All rights reserved.</p>
-            <div class="flex justify-center items-center space-x-6 mt-4">
-                 <a href="#" id="footer-fb-link" target="_blank" class="text-gray-500 hover:text-primary transition"><i data-lucide="facebook" class="w-6 h-6"></i></a>
-                 <a href="#" id="footer-wa-link" target="_blank" class="text-gray-500 hover:text-accent transition"><i data-lucide="message-circle" class="w-6 h-6"></i></a>
-            </div>
-            <p class="mt-4 text-sm">Powered by NUB Evening Society</p>
-        </div>
-    </footer>
+    <footer class="bg-white border-t mt-12"><div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-600"><p class="font-semibold text-gray-800">&copy; 2024 NUB Evening Society. All rights reserved.</p><div class="flex justify-center items-center space-x-6 mt-4"><a href="#" id="footer-fb-link" target="_blank" class="text-gray-500 hover:text-primary transition"><i data-lucide="facebook" class="w-6 h-6"></i></a><a href="#" id="footer-wa-link" target="_blank" class="text-gray-500 hover:text-accent transition"><i data-lucide="message-circle" class="w-6 h-6"></i></a></div><p class="mt-4 text-sm">Powered by NUB Evening Society</p></div></footer>
 
-    <div id="toast" class="fixed bottom-5 right-5 bg-gray-900 text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-300 opacity-0 translate-y-4 z-50">
-        <p id="toast-message"></p>
-    </div>
+    <div id="toast" class="fixed bottom-5 right-5 bg-gray-900 text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-300 opacity-0 translate-y-4 z-50"><p id="toast-message"></p></div>
 
-    <div id="admin-login-backdrop" class="modal-backdrop"></div>
-    <div id="admin-login-modal" class="modal bg-white p-8 rounded-lg shadow-xl w-full max-w-sm m-4"><h3 class="text-2xl font-bold mb-4 text-center">Admin Access</h3><p class="text-center text-gray-600 mb-6">Enter the secret ID to access the admin panel.</p><form id="admin-login-form"><input type="password" id="admin-secret-id" class="w-full px-4 py-2 border rounded-lg mb-4 focus:ring-2 focus:ring-primary transition" placeholder="Secret ID"><button type="submit" class="w-full bg-red-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition flex items-center justify-center gap-2"><span class="btn-text">Login</span><div class="loader hidden"></div></button><button type="button" id="cancel-admin-login" class="w-full mt-2 bg-gray-200 text-gray-700 font-semibold px-4 py-2 rounded-lg hover:bg-gray-300 transition">Cancel</button></form></div>
-    <div id="confirm-modal-backdrop" class="modal-backdrop"></div>
-    <div id="confirm-modal" class="modal bg-white p-8 rounded-lg shadow-xl w-full max-w-sm m-4"><h3 class="text-lg font-bold mb-4" id="confirm-modal-title">Are you sure?</h3><p class="text-gray-600 mb-6" id="confirm-modal-message">This action cannot be undone.</p><div class="flex justify-end gap-4"><button id="confirm-modal-cancel" class="bg-gray-200 text-gray-700 font-semibold px-4 py-2 rounded-lg hover:bg-gray-300 transition">Cancel</button><button id="confirm-modal-confirm" class="bg-red-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition">Confirm</button></div></div>
-
+    <div id="admin-login-backdrop" class="modal-backdrop"></div><div id="admin-login-modal" class="modal bg-white p-8 rounded-lg shadow-xl w-full max-w-sm m-4"><h3 class="text-2xl font-bold mb-4 text-center">Admin Access</h3><p class="text-center text-gray-600 mb-6">Enter the secret ID to access the admin panel.</p><form id="admin-login-form"><input type="password" id="admin-secret-id" class="w-full px-4 py-2 border rounded-lg mb-4 focus:ring-2 focus:ring-primary transition" placeholder="Secret ID"><button type="submit" class="w-full bg-red-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition flex items-center justify-center gap-2"><span class="btn-text">Login</span><div class="loader hidden"></div></button><button type="button" id="cancel-admin-login" class="w-full mt-2 bg-gray-200 text-gray-700 font-semibold px-4 py-2 rounded-lg hover:bg-gray-300 transition">Cancel</button></form></div>
+    <div id="confirm-modal-backdrop" class="modal-backdrop"></div><div id="confirm-modal" class="modal bg-white p-8 rounded-lg shadow-xl w-full max-w-sm m-4"><h3 class="text-lg font-bold mb-4" id="confirm-modal-title">Are you sure?</h3><p class="text-gray-600 mb-6" id="confirm-modal-message">This action cannot be undone.</p><div class="flex justify-end gap-4"><button id="confirm-modal-cancel" class="bg-gray-200 text-gray-700 font-semibold px-4 py-2 rounded-lg hover:bg-gray-300 transition">Cancel</button><button id="confirm-modal-confirm" class="bg-red-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition">Confirm</button></div></div>
+    <div id="cr-edit-modal-backdrop" class="modal-backdrop"></div><div id="cr-edit-modal" class="modal bg-white p-8 rounded-lg shadow-xl w-full max-w-lg m-4"><h3 class="text-2xl font-bold mb-6 text-center">Edit CR Information</h3><form id="cr-edit-form" class="space-y-4"><input type="hidden" id="cr-edit-id"><input type="text" id="cr-edit-name" placeholder="CR Name" required class="w-full px-4 py-2 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><select id="cr-edit-department" required class="w-full px-4 py-2 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select><select id="cr-edit-semester" required class="w-full px-4 py-2 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select><input type="text" id="cr-edit-section" placeholder="Section" required class="w-full px-4 py-2 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><input type="tel" id="cr-edit-phone" placeholder="Phone Number" required class="w-full px-4 py-2 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><input type="url" id="cr-edit-facebook" placeholder="Facebook Profile Link" required class="w-full px-4 py-2 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><div class="flex justify-end gap-4 pt-4"><button type="button" id="cr-edit-cancel" class="bg-gray-200 text-gray-700 font-semibold px-4 py-2 rounded-lg hover:bg-gray-300 transition">Cancel</button><button type="submit" class="bg-green-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-green-700 transition flex items-center justify-center gap-2"><span class="btn-text">Save Changes</span><div class="loader hidden"></div></button></div></form></div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getFirestore, collection, getDocs, doc, addDoc, deleteDoc, onSnapshot, query, where, setDoc, getDoc, orderBy, limit, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { getFirestore, collection, getDocs, doc, addDoc, deleteDoc, onSnapshot, query, where, setDoc, getDoc, orderBy, limit, updateDoc, writeBatch } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
         import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
         
         const firebaseConfig = {
@@ -446,6 +217,7 @@
         let allSubjects = [];
         let allNotices = [];
         let allDonors = [];
+        let allCRs = [];
         const departments = ["EBTX", "EEEE", "ECSE", "ECIVIL", "EME"];
         const semesters = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th"];
 
@@ -453,7 +225,9 @@
             const deptDropdowns = [
                 document.getElementById('donor-department'), document.getElementById('req-department'),
                 document.getElementById('new-subject-department'), document.getElementById('blood-dept-filter'),
-                document.getElementById('subject-dept-filter'), document.getElementById('note-share-department')
+                document.getElementById('subject-dept-filter'), document.getElementById('note-share-department'),
+                document.getElementById('cr-department'), document.getElementById('cr-dept-filter'),
+                document.getElementById('cr-edit-department')
             ];
             deptDropdowns.forEach(dropdown => {
                 if (dropdown) {
@@ -465,7 +239,8 @@
 
             const semDropdowns = [
                 document.getElementById('new-subject-semester'), document.getElementById('subject-semester-filter'),
-                document.getElementById('note-share-semester')
+                document.getElementById('note-share-semester'), document.getElementById('cr-semester'),
+                document.getElementById('cr-semester-filter'), document.getElementById('cr-edit-semester')
             ];
              semDropdowns.forEach(dropdown => {
                 if (dropdown) {
@@ -508,8 +283,8 @@
             return div;
         };
 
-        const toggleButtonLoading = (form, isLoading) => {
-            const button = form.querySelector('button[type="submit"]');
+        const toggleButtonLoading = (form, isLoading, buttonSelector = 'button[type="submit"]') => {
+            const button = form.querySelector(buttonSelector);
             if (!button) return;
             const btnText = button.querySelector('.btn-text');
             const loader = button.querySelector('.loader, .admin-loader');
@@ -576,7 +351,7 @@
                     document.getElementById('footer-wa-link').href = settings.whatsappLink;
                 } else {
                     currentAdminSecret = 'admin123';
-                     await setDoc(doc(db, "settings", "config"), { adminId: "admin123", facebookLink: "https://facebook.com", whatsappLink: "https://whatsapp.com" });
+                     await setDoc(doc(db, "settings", "config"), { adminId: "admin123", facebookLink: "https://facebook.com", whatsappLink: "https://whatsapp.com", lastCrUpdate: '' });
                     await fetchSettings();
                 }
             } catch (error) { console.error("Error fetching settings:", error); showToast("Could not load app settings.", false); }
@@ -597,14 +372,18 @@
             ui.list.innerHTML = '';
             ui.adminList.innerHTML = '';
 
-            filteredSubjects.sort((a, b) => a.name.localeCompare(b.name)).forEach(s => {
-                const card = document.createElement('div');
-                card.className = 'p-6 bg-gray-50 rounded-xl border-2 border-transparent hover:border-primary hover:bg-primary-light cursor-pointer transition-all flex items-center gap-4 transform hover:-translate-y-1';
-                card.innerHTML = `<div><div class="bg-primary-light p-3 rounded-full inline-block"><i data-lucide="book-marked" class="text-primary"></i></div></div><div><span class="font-semibold text-lg">${s.name}</span><p class="text-sm text-gray-500">${s.department} - ${s.semester}</p></div>`;
-                card.dataset.id = s.id; card.dataset.name = s.name;
-                card.addEventListener('click', () => showNotesForSubject(s.id, s.name));
-                ui.list.appendChild(card);
-            });
+            if(filteredSubjects.length === 0){
+                ui.list.innerHTML = `<p class="text-center text-gray-500 col-span-full">No subjects found for this selection. Please try different filters.</p>`;
+            } else {
+                filteredSubjects.sort((a, b) => a.name.localeCompare(b.name)).forEach(s => {
+                    const card = document.createElement('div');
+                    card.className = 'p-6 bg-gray-50 rounded-xl border-2 border-transparent hover:border-primary hover:bg-primary-light cursor-pointer transition-all flex items-center gap-4 transform hover:-translate-y-1';
+                    card.innerHTML = `<div><div class="bg-primary-light p-3 rounded-full inline-block"><i data-lucide="book-marked" class="text-primary"></i></div></div><div><span class="font-semibold text-lg">${s.name}</span><p class="text-sm text-gray-500">${s.department} - ${s.semester}</p></div>`;
+                    card.dataset.id = s.id; card.dataset.name = s.name;
+                    card.addEventListener('click', () => showNotesForSubject(s.id, s.name));
+                    ui.list.appendChild(card);
+                });
+            }
 
             allSubjects.forEach(s => {
                 const adminItem = createAdminDeleteItem(s.id, s.name, `${s.department} - ${s.semester}`);
@@ -681,11 +460,15 @@
                 return groupMatch && deptMatch;
             });
 
-            filteredDonors.forEach(donor => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${donor.name}</td><td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-red-600">${donor.bloodGroup}</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${donor.department}</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${donor.contact}</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${donor.address}</td>`;
-                list.appendChild(tr);
-            });
+            if (filteredDonors.length === 0) {
+                list.innerHTML = `<tr><td colspan="5" class="text-center py-8 text-gray-500">No donors found for this filter.</td></tr>`;
+            } else {
+                filteredDonors.forEach(donor => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${donor.name}</td><td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-red-600">${donor.bloodGroup}</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${donor.department}</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${donor.contact}</td><td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${donor.address}</td>`;
+                    list.appendChild(tr);
+                });
+            }
             
             allDonors.forEach(donor => {
                 const adminItem = createAdminDeleteItem(donor.id, donor.name, `${donor.bloodGroup} - ${donor.contact}`);
@@ -750,12 +533,98 @@
             lucide.createIcons();
         };
 
+        const renderCRs = (crs) => {
+            allCRs = crs;
+            const list = document.getElementById('cr-list');
+            list.innerHTML = '';
+
+            const dept = document.getElementById('cr-dept-filter').value;
+            const sem = document.getElementById('cr-semester-filter').value;
+            const sec = document.getElementById('cr-section-filter').value.toLowerCase();
+
+            const filteredCRs = allCRs.filter(cr => 
+                cr.status === 'approved' &&
+                (!dept || cr.department === dept) &&
+                (!sem || cr.semester === sem) &&
+                (!sec || cr.section.toLowerCase().includes(sec))
+            );
+
+            if (filteredCRs.length === 0) {
+                list.innerHTML = `<p class="text-center text-gray-500 col-span-full">No CRs found for this selection.</p>`;
+                return;
+            }
+
+            filteredCRs.forEach(cr => {
+                const card = document.createElement('div');
+                card.className = 'bg-white p-4 rounded-xl shadow-md border';
+                card.innerHTML = `
+                    <h4 class="font-bold text-lg text-primary">${cr.name}</h4>
+                    <p class="font-semibold text-gray-700">${cr.department} - ${cr.semester} Semester</p>
+                    <p class="text-sm text-gray-600">Section: ${cr.section}</p>
+                    <div class="mt-4 border-t pt-3 space-y-2 text-sm">
+                        <p class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-gray-500"></i>${cr.phone}</p>
+                        <a href="${cr.facebook}" target="_blank" class="flex items-center gap-2 text-blue-600 hover:underline"><i data-lucide="facebook" class="w-4 h-4"></i>Facebook Profile</a>
+                    </div>
+                `;
+                list.appendChild(card);
+            });
+            lucide.createIcons();
+        };
+
+        const renderAdminCRs = (crs) => {
+            const pendingList = document.getElementById('admin-cr-pending-list');
+            const approvedList = document.getElementById('admin-cr-approved-list');
+            pendingList.innerHTML = '';
+            approvedList.innerHTML = '';
+
+            const pending = crs.filter(cr => cr.status === 'pending');
+            const approved = crs.filter(cr => cr.status === 'approved');
+
+            if (pending.length === 0) pendingList.innerHTML = `<p class="text-sm text-gray-500">No pending requests.</p>`;
+            pending.forEach(cr => {
+                const item = document.createElement('div');
+                item.className = 'flex items-center justify-between bg-yellow-50 p-2 rounded-lg';
+                item.innerHTML = `
+                    <div>
+                        <p class="font-medium">${cr.name}</p>
+                        <p class="text-sm text-gray-500">${cr.department} - ${cr.semester} - Sec: ${cr.section}</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button data-id="${cr.id}" class="cr-approve-btn text-green-600 hover:text-green-800 p-1 rounded-full hover:bg-green-100 transition"><i data-lucide="check-circle" class="w-5 h-5"></i></button>
+                        <button data-id="${cr.id}" data-collection="crs" class="delete-btn text-red-500 hover:text-red-700 p-1 rounded-full hover:bg-red-100 transition"><i data-lucide="trash-2" class="w-5 h-5"></i></button>
+                    </div>`;
+                pendingList.appendChild(item);
+            });
+
+            if (approved.length === 0) approvedList.innerHTML = `<p class="text-sm text-gray-500">No approved CRs.</p>`;
+            approved.forEach(cr => {
+                const item = document.createElement('div');
+                item.className = 'flex items-center justify-between bg-gray-100 p-2 rounded-lg';
+                item.innerHTML = `
+                    <div>
+                        <p class="font-medium">${cr.name}</p>
+                        <p class="text-sm text-gray-500">${cr.department} - ${cr.semester}</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button data-id="${cr.id}" class="cr-edit-btn text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100 transition"><i data-lucide="edit" class="w-5 h-5"></i></button>
+                        <button data-id="${cr.id}" data-collection="crs" class="delete-btn text-red-500 hover:text-red-700 p-1 rounded-full hover:bg-red-100 transition"><i data-lucide="trash-2" class="w-5 h-5"></i></button>
+                    </div>`;
+                approvedList.appendChild(item);
+            });
+            lucide.createIcons();
+        };
+
         const setupListeners = () => {
             onSnapshot(collection(db, 'subjects'), s => renderSubjects(s.docs.map(d => ({ id: d.id, ...d.data() }))));
             onSnapshot(collection(db, 'donors'), s => renderBloodDonors(s.docs.map(d => ({ id: d.id, ...d.data() }))));
             onSnapshot(query(collection(db, 'notices'), orderBy('createdAt', 'desc')), s => renderNotices(s.docs.map(d => ({id: d.id, data: d.data()}))));
             onSnapshot(collection(db, 'team'), s => renderTeam(s.docs.map(d => ({id: d.id, data: d.data()}))));
             onSnapshot(collection(db, 'requests'), s => renderRequests(s.docs.map(d => ({ id: d.id, ...d.data() }))));
+            onSnapshot(collection(db, 'crs'), s => {
+                const crData = s.docs.map(d => ({ id: d.id, ...d.data() }));
+                renderCRs(crData);
+                renderAdminCRs(crData);
+            });
             onSnapshot(collection(db, "notes"), s => {
                 const allNotes = s.docs.map(d => ({ id: d.id, ...d.data() }));
                 renderAdminNotes(allNotes);
@@ -769,9 +638,67 @@
                 }
             });
         };
+        
+        const handleAutomaticCrUpdates = async () => {
+            const today = new Date();
+            const todayStr = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+            const currentMonth = today.getMonth() + 1; // 1-12
+            const currentDay = today.getDate();
+
+            const triggerMonths = [2, 6, 10]; // Feb, June, Oct
+
+            if (triggerMonths.includes(currentMonth) && currentDay === 1) {
+                try {
+                    const settingsRef = doc(db, 'settings', 'config');
+                    const settingsSnap = await getDoc(settingsRef);
+
+                    if (settingsSnap.exists() && settingsSnap.data().lastCrUpdate === todayStr) {
+                        console.log("CR semester update has already run today.");
+                        return;
+                    }
+
+                    console.log("Running automatic CR semester update...");
+                    const crQuery = query(collection(db, "crs"), where("status", "==", "approved"));
+                    const crsSnapshot = await getDocs(crQuery);
+                    
+                    const batch = writeBatch(db);
+
+                    const parseSemester = (str) => parseInt(str.replace(/st|nd|rd|th/,''));
+                    const formatSemester = (num) => {
+                        if (num === 1) return '1st';
+                        if (num === 2) return '2nd';
+                        if (num === 3) return '3rd';
+                        return `${num}th`;
+                    };
+
+                    crsSnapshot.forEach(crDoc => {
+                        const crData = crDoc.data();
+                        const currentSemesterNum = parseSemester(crData.semester);
+
+                        if (currentSemesterNum >= 9) {
+                            batch.delete(crDoc.ref);
+                            console.log(`Deleting 9th semester CR: ${crData.name}`);
+                        } else {
+                            const newSemesterStr = formatSemester(currentSemesterNum + 1);
+                            batch.update(crDoc.ref, { semester: newSemesterStr });
+                            console.log(`Updating CR ${crData.name} to ${newSemesterStr} semester.`);
+                        }
+                    });
+
+                    batch.update(settingsRef, { lastCrUpdate: todayStr });
+
+                    await batch.commit();
+                    showToast("CR semesters automatically updated.");
+                } catch (error) {
+                    console.error("Error during automatic CR update:", error);
+                    showToast("Failed to run automatic CR update.", false);
+                }
+            }
+        };
 
         const initializeAppData = async () => {
             await fetchSettings();
+            await handleAutomaticCrUpdates();
             setupListeners();
         };
 
@@ -795,6 +722,9 @@
         document.getElementById('subject-semester-filter').addEventListener('input', () => renderSubjects(allSubjects));
         document.getElementById('blood-group-filter').addEventListener('input', () => renderBloodDonors(allDonors));
         document.getElementById('blood-dept-filter').addEventListener('input', () => renderBloodDonors(allDonors));
+        document.getElementById('cr-dept-filter').addEventListener('input', () => renderCRs(allCRs));
+        document.getElementById('cr-semester-filter').addEventListener('input', () => renderCRs(allCRs));
+        document.getElementById('cr-section-filter').addEventListener('input', () => renderCRs(allCRs));
 
         document.getElementById('notice-search').addEventListener('input', () => renderNotices(allNotices));
 
@@ -855,6 +785,8 @@
         handleFormSubmit('add-note-form', 'notes', f => ({ uploaderName: f['uploader-name'].value, subjectId: f['note-subject'].value, topic: f['note-topic'].value, gdriveLink: f['gdrive-link'].value, createdAt: new Date() }));
         handleFormSubmit('add-donor-form', 'donors', f => ({ name: f['donor-name'].value, bloodGroup: f['blood-group'].value, department: f['donor-department'].value, contact: f['donor-contact'].value, address: f['donor-address'].value }));
         handleFormSubmit('membership-request-form', 'requests', f => ({ name: f['req-name'].value, studentId: f['req-student-id'].value, department: f['req-department'].value, section: f['req-section'].value, semester: f['req-semester'].value }));
+        handleFormSubmit('add-cr-form', 'crs', f => ({ name: f['cr-name'].value, department: f['cr-department'].value, semester: f['cr-semester'].value, section: f['cr-section'].value, phone: f['cr-phone'].value, facebook: f['cr-facebook'].value, status: 'pending' }));
+
 
         const showAdminLogin = () => { document.getElementById('admin-login-backdrop').style.display = 'block'; document.getElementById('admin-login-modal').style.display = 'block'; };
         const hideAdminLogin = () => { document.getElementById('admin-login-backdrop').style.display = 'none'; document.getElementById('admin-login-modal').style.display = 'none'; document.getElementById('admin-login-form').reset(); };
@@ -939,6 +871,22 @@
                     } catch (error) { showToast("Failed to delete item.", false); console.error(error); }
                 });
             }
+            const approveBtn = e.target.closest('.cr-approve-btn');
+            if (approveBtn) {
+                const { id } = approveBtn.dataset;
+                try {
+                    await updateDoc(doc(db, 'crs', id), { status: 'approved' });
+                    showToast("CR Approved successfully!");
+                } catch(err) {
+                    showToast("Failed to approve CR.", false);
+                    console.error(err);
+                }
+            }
+            const editBtn = e.target.closest('.cr-edit-btn');
+            if(editBtn){
+                const { id } = editBtn.dataset;
+                openCrEditModal(id);
+            }
             const latestNoticeLink = e.target.closest('.latest-notice-link');
             if (latestNoticeLink) {
                 e.preventDefault();
@@ -954,16 +902,12 @@
             }
         });
 
-        // --- Gallery ---
         const renderGallerySlider = (galleryData) => {
             const wrapper = document.getElementById('gallery-wrapper');
             const slider = document.getElementById('gallery-slider');
             wrapper.innerHTML = '';
             const images = Object.values(galleryData).filter(url => url);
-            if (images.length === 0) {
-                slider.classList.add('hidden');
-                return;
-            }
+            if (images.length === 0) { slider.classList.add('hidden'); return; }
             slider.classList.remove('hidden');
             images.forEach(url => {
                 const div = document.createElement('div');
@@ -972,23 +916,16 @@
                 wrapper.appendChild(div);
             });
             let currentIndex = 0;
-            const slide = () => {
-                currentIndex = (currentIndex + 1) % images.length;
-                wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-            };
+            const slide = () => { currentIndex = (currentIndex + 1) % images.length; wrapper.style.transform = `translateX(-${currentIndex * 100}%)`; };
             document.getElementById('next-slide').onclick = slide;
-            document.getElementById('prev-slide').onclick = () => {
-                currentIndex = (currentIndex - 1 + images.length) % images.length;
-                 wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-            };
+            document.getElementById('prev-slide').onclick = () => { currentIndex = (currentIndex - 1 + images.length) % images.length; wrapper.style.transform = `translateX(-${currentIndex * 100}%)`; };
             setInterval(slide, 5000);
         };
+
         const renderAdminGalleryPreviews = (galleryData) => {
             for (let i = 1; i <= 3; i++) {
                 const img = document.getElementById(`gallery-preview-${i}`);
-                if (galleryData[`image${i}`]) {
-                    img.src = galleryData[`image${i}`];
-                }
+                if (galleryData[`image${i}`]) img.src = galleryData[`image${i}`];
             }
         };
 
@@ -997,36 +934,14 @@
                 const btn = e.currentTarget;
                 const btnText = btn.querySelector('.btn-text');
                 const loader = btn.querySelector('.admin-loader');
-
-                const startLoading = () => {
-                    btn.disabled = true;
-                    if (btnText) btnText.classList.add('hidden');
-                    if (loader) loader.classList.remove('hidden');
-                };
-
-                const stopLoading = () => {
-                    btn.disabled = false;
-                    if (btnText) btnText.classList.remove('hidden');
-                    if (loader) loader.classList.add('hidden');
-                };
-
+                const startLoading = () => { btn.disabled = true; if (btnText) btnText.classList.add('hidden'); if (loader) loader.classList.remove('hidden'); };
+                const stopLoading = () => { btn.disabled = false; if (btnText) btnText.classList.remove('hidden'); if (loader) loader.classList.add('hidden'); };
                 startLoading();
-
                 const slot = btn.closest('.gallery-slot').dataset.slot;
                 const fileInput = document.getElementById(`gallery-upload-${slot}`);
                 const file = fileInput.files[0];
-
-                if (!file) {
-                    showToast("Please select an image first.", false);
-                    stopLoading();
-                    return;
-                }
-                if (file.size > 750 * 1024) {
-                    showToast("Image is too large (under 750 KB).", false);
-                    stopLoading();
-                    return;
-                }
-                
+                if (!file) { showToast("Please select an image first.", false); stopLoading(); return; }
+                if (file.size > 750 * 1024) { showToast("Image is too large (under 750 KB).", false); stopLoading(); return; }
                 const reader = new FileReader();
                 reader.onload = async (event) => {
                     try {
@@ -1035,21 +950,71 @@
                         await setDoc(galleryRef, { [`image${slot}`]: imageDataUrl }, { merge: true });
                         showToast(`Image ${slot} saved successfully!`);
                         document.getElementById(`gallery-preview-${slot}`).src = imageDataUrl;
-                    } catch (error) {
-                        console.error(error);
-                        showToast("Failed to save image.", false);
-                    } finally {
-                        stopLoading();
-                        fileInput.value = ''; // Clear the input
-                    }
+                    } catch (error) { console.error(error); showToast("Failed to save image.", false); } 
+                    finally { stopLoading(); fileInput.value = ''; }
                 };
-                reader.onerror = () => {
-                    showToast("Failed to read the image file.", false);
-                    stopLoading();
-                };
+                reader.onerror = () => { showToast("Failed to read the image file.", false); stopLoading(); };
                 reader.readAsDataURL(file);
             });
         });
+
+        // CR Edit Modal
+        const crEditModalBackdrop = document.getElementById('cr-edit-modal-backdrop');
+        const crEditModal = document.getElementById('cr-edit-modal');
+        const crEditForm = document.getElementById('cr-edit-form');
+        const crEditCancelBtn = document.getElementById('cr-edit-cancel');
+
+        const openCrEditModal = async (crId) => {
+            const crDoc = await getDoc(doc(db, "crs", crId));
+            if(!crDoc.exists()) {
+                showToast("CR not found.", false);
+                return;
+            }
+            const data = crDoc.data();
+            crEditForm['cr-edit-id'].value = crId;
+            crEditForm['cr-edit-name'].value = data.name;
+            crEditForm['cr-edit-department'].value = data.department;
+            crEditForm['cr-edit-semester'].value = data.semester;
+            crEditForm['cr-edit-section'].value = data.section;
+            crEditForm['cr-edit-phone'].value = data.phone;
+            crEditForm['cr-edit-facebook'].value = data.facebook;
+            crEditModalBackdrop.style.display = 'block';
+            crEditModal.style.display = 'block';
+        };
+
+        const closeCrEditModal = () => {
+            crEditModalBackdrop.style.display = 'none';
+            crEditModal.style.display = 'none';
+            crEditForm.reset();
+        };
+
+        [crEditModalBackdrop, crEditCancelBtn].forEach(el => el.addEventListener('click', closeCrEditModal));
+
+        crEditForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            toggleButtonLoading(crEditForm, true);
+            const id = crEditForm['cr-edit-id'].value;
+            const updatedData = {
+                name: crEditForm['cr-edit-name'].value,
+                department: crEditForm['cr-edit-department'].value,
+                semester: crEditForm['cr-edit-semester'].value,
+                section: crEditForm['cr-edit-section'].value,
+                phone: crEditForm['cr-edit-phone'].value,
+                facebook: crEditForm['cr-edit-facebook'].value,
+            };
+
+            try {
+                await updateDoc(doc(db, 'crs', id), updatedData);
+                showToast("CR info updated successfully!");
+                closeCrEditModal();
+            } catch (error) {
+                console.error("Error updating CR info: ", error);
+                showToast("Failed to update CR info.", false);
+            } finally {
+                toggleButtonLoading(crEditForm, false);
+            }
+        });
+
 
         window.addEventListener('popstate', (e) => {
             const pageId = (e.state && e.state.page) ? e.state.page : 'home';
@@ -1060,76 +1025,69 @@
             populateDropdowns();
             const initialPageId = window.location.hash.substring(1) || 'home';
             showPage(initialPageId, false);
-        };
-    </script>
-    <script>
-        // --- Cover Page Generator Logic ---
-        const coverPageForm = document.getElementById('coverPageForm');
-        let logoData = null;
-        const defaultLogoURL = "https://raw.githubusercontent.com/farhanmonsurfahim/assignment/main/nub.jpeg";
-        const defaultLogoImage = new Image();
-        defaultLogoImage.crossOrigin = "anonymous";
-        defaultLogoImage.onload = () => {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = defaultLogoImage.width;
-            canvas.height = defaultLogoImage.height;
-            ctx.drawImage(defaultLogoImage, 0, 0);
-            logoData = canvas.toDataURL('image/jpeg');
-        };
-        defaultLogoImage.src = defaultLogoURL;
-        const getCoverFormData = () => ({
-            universityName: document.getElementById('universityName').value, name: document.getElementById('name').value, studentId: document.getElementById('studentId').value, department: document.getElementById('department').value, semester: document.getElementById('semester').value, section: document.getElementById('section').value, assignmentTopic: document.getElementById('assignmentTopic').value, subject: document.getElementById('subject').value, courseTeacher: document.getElementById('courseTeacher').value, teacherDesignation: document.getElementById('teacherDesignation').value,
-            submissionDate: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
-        });
-        const generatePDF = () => {
-            const formData = getCoverFormData();
-            if (!logoData || !formData.name || !formData.studentId || !formData.department || !formData.semester || !formData.section || !formData.assignmentTopic || !formData.subject) {
-                if (typeof showToast === 'function') {
-                    showToast("Please fill in all required fields.", false);
+
+            const coverPageForm = document.getElementById('coverPageForm');
+            let logoData = null;
+            const defaultLogoURL = "https://raw.githubusercontent.com/farhanmonsurfahim/assignment/main/nub.jpeg";
+            const defaultLogoImage = new Image();
+            defaultLogoImage.crossOrigin = "anonymous";
+            defaultLogoImage.onload = () => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = defaultLogoImage.width;
+                canvas.height = defaultLogoImage.height;
+                ctx.drawImage(defaultLogoImage, 0, 0);
+                logoData = canvas.toDataURL('image/jpeg');
+            };
+            defaultLogoImage.src = defaultLogoURL;
+            const getCoverFormData = () => ({
+                universityName: document.getElementById('universityName').value, name: document.getElementById('name').value, studentId: document.getElementById('studentId').value, department: document.getElementById('department').value, semester: document.getElementById('semester').value, section: document.getElementById('section').value, assignmentTopic: document.getElementById('assignmentTopic').value, subject: document.getElementById('subject').value, courseTeacher: document.getElementById('courseTeacher').value, teacherDesignation: document.getElementById('teacherDesignation').value,
+                submissionDate: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+            });
+            const generatePDF = () => {
+                const formData = getCoverFormData();
+                if (!logoData || !formData.name || !formData.studentId || !formData.department || !formData.semester || !formData.section || !formData.assignmentTopic || !formData.subject) {
+                    if (typeof showToast === 'function') { showToast("Please fill in all required fields.", false); }
+                    return;
                 }
-                return;
-            }
-            if (typeof window.jspdf === 'undefined') { 
-                if (typeof showToast === 'function') {
-                    showToast('Error: PDF library not available.', false);
+                if (typeof window.jspdf === 'undefined') { 
+                    if (typeof showToast === 'function') { showToast('Error: PDF library not available.', false); }
+                    return; 
                 }
-                return; 
-            }
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            doc.setDrawColor(0); doc.setLineWidth(1); doc.rect(10, 10, doc.internal.pageSize.getWidth() - 20, doc.internal.pageSize.getHeight() - 20);
-            const logoSize = 60, logoX = (doc.internal.pageSize.getWidth() - logoSize) / 2;
-            doc.addImage(logoData, 'JPEG', logoX, 40, logoSize, logoSize);
-            doc.setFontSize(22); doc.text(formData.universityName, doc.internal.pageSize.getWidth() / 2, 120, { align: 'center' });
-            doc.setLineWidth(0.5); doc.line(30, 135, doc.internal.pageSize.getWidth() - 30, 135);
-            doc.setFontSize(26); doc.setFont('Helvetica', 'bold'); doc.text('ASSIGNMENT SUBMISSION', doc.internal.pageSize.getWidth() / 2, 150, { align: 'center' });
-            doc.setFontSize(18); doc.setFont('Helvetica', 'normal'); doc.text('Subject: ' + formData.subject, doc.internal.pageSize.getWidth() / 2, 160, { align: 'center' });
-            const boxWidth = 150, boxHeight = 15, boxX = (doc.internal.pageSize.getWidth() - boxWidth) / 2;
-            doc.setDrawColor(0); doc.setFillColor(255, 255, 255); doc.rect(boxX, 170, boxWidth, boxHeight, 'FD');
-            doc.setFontSize(14); doc.text(formData.assignmentTopic, doc.internal.pageSize.getWidth() / 2, 179, { align: 'center' });
-            doc.setLineWidth(0.5); doc.line(30, 190, doc.internal.pageSize.getWidth() - 30, 190);
-            doc.setFontSize(14);
-            const leftX = 30, rightX = doc.internal.pageSize.getWidth() / 2 + 10, spacing = 8;
-            let currentY = 210;
-            doc.setFont('Helvetica', 'bold'); doc.text('Submitted by:', leftX, currentY); doc.line(leftX, currentY + 1, leftX + 25, currentY + 1);
-            doc.setFont('Helvetica', 'normal'); currentY += spacing + 5;
-            doc.text('Name: ' + formData.name, leftX, currentY); doc.text('ID: ' + formData.studentId, leftX, currentY + spacing); doc.text('Semester/Section: ' + formData.semester + '-' + formData.section, leftX, currentY + 2 * spacing); doc.text('Dept. of ' + formData.department, leftX, currentY + 3 * spacing);
-            let finalY = currentY + 4 * spacing;
-            if (formData.courseTeacher) {
-                currentY = 210;
-                doc.setFont('Helvetica', 'bold'); doc.text('Submitted to:', rightX, currentY); doc.line(rightX, currentY + 1, rightX + 25, currentY + 1);
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                doc.setDrawColor(0); doc.setLineWidth(1); doc.rect(10, 10, doc.internal.pageSize.getWidth() - 20, doc.internal.pageSize.getHeight() - 20);
+                const logoSize = 60, logoX = (doc.internal.pageSize.getWidth() - logoSize) / 2;
+                doc.addImage(logoData, 'JPEG', logoX, 40, logoSize, logoSize);
+                doc.setFontSize(22); doc.text(formData.universityName, doc.internal.pageSize.getWidth() / 2, 120, { align: 'center' });
+                doc.setLineWidth(0.5); doc.line(30, 135, doc.internal.pageSize.getWidth() - 30, 135);
+                doc.setFontSize(26); doc.setFont('Helvetica', 'bold'); doc.text('ASSIGNMENT SUBMISSION', doc.internal.pageSize.getWidth() / 2, 150, { align: 'center' });
+                doc.setFontSize(18); doc.setFont('Helvetica', 'normal'); doc.text('Subject: ' + formData.subject, doc.internal.pageSize.getWidth() / 2, 160, { align: 'center' });
+                const boxWidth = 150, boxHeight = 15, boxX = (doc.internal.pageSize.getWidth() - boxWidth) / 2;
+                doc.setDrawColor(0); doc.setFillColor(255, 255, 255); doc.rect(boxX, 170, boxWidth, boxHeight, 'FD');
+                doc.setFontSize(14); doc.text(formData.assignmentTopic, doc.internal.pageSize.getWidth() / 2, 179, { align: 'center' });
+                doc.setLineWidth(0.5); doc.line(30, 190, doc.internal.pageSize.getWidth() - 30, 190);
+                doc.setFontSize(14);
+                const leftX = 30, rightX = doc.internal.pageSize.getWidth() / 2 + 10, spacing = 8;
+                let currentY = 210;
+                doc.setFont('Helvetica', 'bold'); doc.text('Submitted by:', leftX, currentY); doc.line(leftX, currentY + 1, leftX + 25, currentY + 1);
                 doc.setFont('Helvetica', 'normal'); currentY += spacing + 5;
-                doc.text('Teacher Name: ' + formData.courseTeacher, rightX, currentY);
-                if (formData.teacherDesignation) { doc.text('Designation: ' + formData.teacherDesignation, rightX, currentY + spacing); currentY += spacing; }
-            }
-            const finalYPos = Math.max(finalY, currentY) + 20;
-            doc.text('Date: ' + formData.submissionDate, doc.internal.pageSize.getWidth() / 2, finalYPos, { align: 'center' });
-            doc.save(formData.assignmentTopic.replace(/ /g, '_') + '_Cover_Page.pdf');
+                doc.text('Name: ' + formData.name, leftX, currentY); doc.text('ID: ' + formData.studentId, leftX, currentY + spacing); doc.text('Semester/Section: ' + formData.semester + '-' + formData.section, leftX, currentY + 2 * spacing); doc.text('Dept. of ' + formData.department, leftX, currentY + 3 * spacing);
+                let finalY = currentY + 4 * spacing;
+                if (formData.courseTeacher) {
+                    currentY = 210;
+                    doc.setFont('Helvetica', 'bold'); doc.text('Submitted to:', rightX, currentY); doc.line(rightX, currentY + 1, rightX + 25, currentY + 1);
+                    doc.setFont('Helvetica', 'normal'); currentY += spacing + 5;
+                    doc.text('Teacher Name: ' + formData.courseTeacher, rightX, currentY);
+                    if (formData.teacherDesignation) { doc.text('Designation: ' + formData.teacherDesignation, rightX, currentY + spacing); currentY += spacing; }
+                }
+                const finalYPos = Math.max(finalY, currentY) + 20;
+                doc.text('Date: ' + formData.submissionDate, doc.internal.pageSize.getWidth() / 2, finalYPos, { align: 'center' });
+                doc.save(formData.assignmentTopic.replace(/ /g, '_') + '_Cover_Page.pdf');
+            };
+            if (coverPageForm) coverPageForm.addEventListener('submit', (e) => { e.preventDefault(); generatePDF(); });
         };
-        if (coverPageForm) coverPageForm.addEventListener('submit', (e) => { e.preventDefault(); generatePDF(); });
     </script>
 </body>
 </html>
-
 
