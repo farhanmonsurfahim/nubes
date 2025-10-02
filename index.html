@@ -1057,7 +1057,37 @@
             }
         };
 
-        // --- Cover Page Generator Logic ---
+        ['notification-bell', 'notification-bell-mobile'].forEach(id => {
+            document.getElementById(id).addEventListener('click', requestNotificationPermission);
+        });
+        
+        onMessage(messaging, (payload) => {
+            console.log('Message received. ', payload);
+            showToast(`New Notification: ${payload.notification.title}`);
+        });
+
+        document.getElementById('clear-subscribers-btn').addEventListener('click', () => {
+             showConfirmModal("Are you sure you want to delete ALL subscribers? This cannot be undone.", async () => {
+                try {
+                    const subsSnapshot = await getDocs(collection(db, 'subscribers'));
+                    const batch = writeBatch(db);
+                    subsSnapshot.docs.forEach(d => batch.delete(d.ref));
+                    await batch.commit();
+                    showToast("All subscribers have been cleared.");
+                } catch (error) {
+                    showToast("Failed to clear subscribers.", false);
+                    console.error(error);
+                }
+            });
+        });
+
+        document.getElementById('send-note-notification').addEventListener('click', () => {
+            showToast("This feature requires a backend function (Firebase Cloud Function) to be deployed.", false);
+        });
+        document.getElementById('send-notice-notification').addEventListener('click', () => {
+            showToast("This feature requires a backend function (Firebase Cloud Function) to be deployed.", false);
+        });
+
         const coverPageForm = document.getElementById('coverPageForm');
         let logoData = null;
         const defaultLogoURL = "https://raw.githubusercontent.com/farhanmonsurfahim/assignment/main/nub.jpeg";
