@@ -111,7 +111,6 @@
                         <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary-light transition-colors flex items-center gap-2" data-page="team"><i data-lucide="users" class="w-4 h-4"></i>Team</a>
                         <a href="#" id="admin-link" class="px-3 py-2 rounded-md text-sm font-semibold text-gray-600 hover:text-primary hover:bg-primary-light transition-colors flex items-center gap-2"><i data-lucide="sliders-horizontal" class="w-4 h-4"></i>Admin</a>
                         <a href="#" class="nav-link ml-4 px-4 py-2 rounded-full text-sm font-semibold text-white bg-red-600 hover:bg-red-700 shadow-sm transition-transform hover:scale-105 flex items-center gap-2" data-page="membership"><i data-lucide="user-plus" class="w-4 h-4"></i>Join</a>
-                        <button id="notification-bell" class="ml-2 p-2 rounded-full text-gray-600 hover:text-primary hover:bg-primary-light transition-colors"><i data-lucide="bell" class="w-5 h-5"></i></button>
                     </div>
                 </div>
                 <div class="-mr-2 flex lg:hidden">
@@ -133,7 +132,6 @@
                 <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3" data-page="notices"><i data-lucide="megaphone" class="w-5 h-5"></i>Notices</a>
                 <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3" data-page="team"><i data-lucide="users" class="w-5 h-5"></i>Team</a>
                 <a href="#" id="admin-link-mobile" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3"><i data-lucide="sliders-horizontal" class="w-5 h-5"></i>Admin</a>
-                <button id="notification-bell-mobile" class="w-full text-left block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-primary hover:bg-primary-light flex items-center gap-3"><i data-lucide="bell" class="w-5 h-5"></i>Get Notifications</button>
                 <a href="#" class="nav-link block w-full text-center mt-4 px-3 py-3 rounded-md text-base font-semibold text-white bg-red-600 hover:bg-red-700 shadow-sm flex items-center justify-center gap-3" data-page="membership"><i data-lucide="user-plus" class="w-5 h-5"></i>Join</a>
             </div>
         </div>
@@ -185,7 +183,7 @@
 
         <div id="membership" class="page"><div class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200 max-w-2xl mx-auto"><h2 class="text-3xl md:text-4xl font-extrabold mb-6 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="user-plus" class="text-accent"></i>Request Membership</h2><form id="membership-request-form" class="space-y-4"><input type="text" id="req-name" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><input type="text" id="req-student-id" placeholder="Student ID" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><select id="req-department" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"></select><input type="text" id="req-section" placeholder="Section" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><input type="text" id="req-semester" placeholder="Semester" required class="w-full px-4 py-3 border rounded-lg bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent transition"><button type="submit" class="w-full bg-red-600 font-semibold text-white px-4 py-3 rounded-lg hover:bg-red-700 shadow-sm transition-transform hover:scale-105 flex items-center justify-center gap-2"><span class="btn-text flex items-center justify-center gap-2"><i data-lucide="file-plus-2" class="w-5 h-5"></i>Request Membership</span><div class="loader hidden"></div></button></form></div></div>
         
-        <div id="admin" class="page"><h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="sliders-horizontal" class="text-accent"></i>Admin Panel</h2><div class="grid grid-cols-1 lg:grid-cols-2 gap-8"><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Subjects</h3><form id="add-subject-form" class="space-y-4 mb-4"><input type="text" id="new-subject-name" placeholder="New Subject Name" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"><select id="new-subject-department" required class="w-full px-4 py-2 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-accent transition"></select><select id="new-subject-semester" required class="w-full px-4 py-2 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-accent transition"></select><button type="submit" class="w-full bg-red-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition flex items-center justify-center gap-2"><span class="btn-text flex items-center justify-center gap-2"><i data-lucide="plus" class="w-5 h-5"></i>Add Subject</span><div class="admin-loader hidden"></div></button></form><div id="admin-subjects-list" class="space-y-2"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Gallery</h3><div class="space-y-6"><div class="gallery-slot" data-slot="1"><img id="gallery-preview-1" class="w-full h-32 object-cover rounded-lg bg-gray-200 mb-2" src="https://placehold.co/600x400/cccccc/ffffff?text=Slot+1"><input type="file" id="gallery-upload-1" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100"><button class="save-gallery-btn mt-2 w-full bg-blue-600 text-white text-sm font-semibold px-3 py-1.5 rounded-lg hover:bg-blue-700 transition flex items-center justify-center"><span class="btn-text">Save Image 1</span><div class="admin-loader hidden" style="border-top-color: white; width: 16px; height: 16px;"></div></button></div><div class="gallery-slot" data-slot="2"><img id="gallery-preview-2" class="w-full h-32 object-cover rounded-lg bg-gray-200 mb-2" src="https://placehold.co/600x400/cccccc/ffffff?text=Slot+2"><input type="file" id="gallery-upload-2" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100"><button class="save-gallery-btn mt-2 w-full bg-blue-600 text-white text-sm font-semibold px-3 py-1.5 rounded-lg hover:bg-blue-700 transition flex items-center justify-center"><span class="btn-text">Save Image 2</span><div class="admin-loader hidden" style="border-top-color: white; width: 16px; height: 16px;"></div></button></div><div class="gallery-slot" data-slot="3"><img id="gallery-preview-3" class="w-full h-32 object-cover rounded-lg bg-gray-200 mb-2" src="https://placehold.co/600x400/cccccc/ffffff?text=Slot+3"><input type="file" id="gallery-upload-3" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100"><button class="save-gallery-btn mt-2 w-full bg-blue-600 text-white text-sm font-semibold px-3 py-1.5 rounded-lg hover:bg-blue-700 transition flex items-center justify-center"><span class="btn-text">Save Image 3</span><div class="admin-loader hidden" style="border-top-color: white; width: 16px; height: 16px;"></div></button></div></div><p class="text-xs text-red-600 font-semibold flex items-center gap-1 mt-4"><i data-lucide="alert-triangle" class="w-4 h-4"></i>Important: Images must be small (under 750 KB).</p></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Notes</h3><div class="mb-4"><button id="send-note-notification" class="w-full bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 font-semibold transition">Send Notification for Last Note</button></div><div class="flex gap-2 mb-4"><select id="admin-note-subject-filter" class="flex-grow px-4 py-2 border rounded-lg bg-white focus:ring-2 focus:ring-accent transition"></select></div><div id="admin-notes-list" class="space-y-2"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Blood Donors</h3><div id="admin-donors-list" class="space-y-2"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Notices</h3><form id="add-notice-form" class="space-y-4 mb-4"><input type="text" id="notice-title" placeholder="Notice Title" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"><textarea id="notice-desc" placeholder="Notice Description" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"></textarea><div><label for="notice-image-upload" class="block text-sm font-medium text-gray-700">Notice Image (optional)</label><input type="file" id="notice-image-upload" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100"></div><p class="text-xs text-red-600 font-semibold flex items-center gap-1"><i data-lucide="alert-triangle" class="w-4 h-4"></i>Important: Images must be small (under 750 KB).</p><button type="submit" class="w-full bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 flex items-center justify-center gap-2 font-semibold transition"><span class="btn-text">Post Notice</span><div class="admin-loader hidden"></div></button></form><button id="send-notice-notification" class="w-full bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 font-semibold transition mt-4">Send Notification for Last Notice</button><div id="admin-notices-list" class="space-y-2 mt-4"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Team</h3><form id="add-team-member-form" class="space-y-4 mb-4"><input type="text" id="member-name" placeholder="Member Name" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"><input type="text" id="member-title" placeholder="Member Title (e.g., President)" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"><div><label for="member-image-upload" class="block text-sm font-medium text-gray-700">Profile Image</label><input type="file" id="member-image-upload" accept="image/*" required class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100"></div><p class="text-xs text-red-600 font-semibold flex items-center gap-1"><i data-lucide="alert-triangle" class="w-4 h-4"></i>Important: Images must be small (under 750 KB).</p><button type="submit" class="w-full bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 flex items-center justify-center gap-2 font-semibold transition"><span class="btn-text">Add Member</span><div class="admin-loader hidden"></div></button></form><div id="admin-team-list" class="space-y-2"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Membership Requests</h3><div id="admin-requests-list" class="space-y-2"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Subscribers</h3><p id="subscriber-count" class="mb-4 font-bold text-lg">Total Subscribers: 0</p><button id="clear-subscribers-btn" class="w-full bg-red-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition">Clear All Subscribers</button><div id="admin-subscribers-list" class="mt-4 space-y-2 max-h-48 overflow-y-auto"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 lg:col-span-2"><h3 class="text-xl font-semibold mb-4">Manage CRs</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div><h4 class="font-bold mb-2">Pending Requests</h4><div id="admin-cr-pending-list" class="space-y-2"></div></div><div><h4 class="font-bold mb-2">Approved CRs</h4><div id="admin-cr-approved-list" class="space-y-2"></div></div></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 lg:col-span-2"><h3 class="text-xl font-semibold mb-4">Settings</h3><form id="settings-form" class="space-y-4"><label class="block"><span class="text-sm font-medium">Facebook Page Link</span><input type="url" id="facebook-link" required class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"></label><label class="block"><span class="text-sm font-medium">WhatsApp Group Link</span><input type="url" id="whatsapp-link" required class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"></label><button type="submit" class="w-full bg-red-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-red-700 transition flex items-center justify-center gap-2"><span class="btn-text flex items-center justify-center gap-2"><i data-lucide="save" class="w-5 h-5"></i>Save Settings</span><div class="loader hidden"></div></button></form></div></div></div>
+        <div id="admin" class="page"><h2 class="text-3xl md:text-4xl font-extrabold mb-8 text-center tracking-tight flex items-center justify-center gap-3"><i data-lucide="sliders-horizontal" class="text-accent"></i>Admin Panel</h2><div class="grid grid-cols-1 lg:grid-cols-2 gap-8"><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Subjects</h3><form id="add-subject-form" class="space-y-4 mb-4"><input type="text" id="new-subject-name" placeholder="New Subject Name" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"><select id="new-subject-department" required class="w-full px-4 py-2 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-accent transition"></select><select id="new-subject-semester" required class="w-full px-4 py-2 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-accent transition"></select><button type="submit" class="w-full bg-red-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition flex items-center justify-center gap-2"><span class="btn-text flex items-center justify-center gap-2"><i data-lucide="plus" class="w-5 h-5"></i>Add Subject</span><div class="admin-loader hidden"></div></button></form><div id="admin-subjects-list" class="space-y-2"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Gallery</h3><div class="space-y-6"><div class="gallery-slot" data-slot="1"><img id="gallery-preview-1" class="w-full h-32 object-cover rounded-lg bg-gray-200 mb-2" src="https://placehold.co/600x400/cccccc/ffffff?text=Slot+1"><input type="file" id="gallery-upload-1" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100"><button class="save-gallery-btn mt-2 w-full bg-blue-600 text-white text-sm font-semibold px-3 py-1.5 rounded-lg hover:bg-blue-700 transition flex items-center justify-center"><span class="btn-text">Save Image 1</span><div class="admin-loader hidden" style="border-top-color: white; width: 16px; height: 16px;"></div></button></div><div class="gallery-slot" data-slot="2"><img id="gallery-preview-2" class="w-full h-32 object-cover rounded-lg bg-gray-200 mb-2" src="https://placehold.co/600x400/cccccc/ffffff?text=Slot+2"><input type="file" id="gallery-upload-2" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100"><button class="save-gallery-btn mt-2 w-full bg-blue-600 text-white text-sm font-semibold px-3 py-1.5 rounded-lg hover:bg-blue-700 transition flex items-center justify-center"><span class="btn-text">Save Image 2</span><div class="admin-loader hidden" style="border-top-color: white; width: 16px; height: 16px;"></div></button></div><div class="gallery-slot" data-slot="3"><img id="gallery-preview-3" class="w-full h-32 object-cover rounded-lg bg-gray-200 mb-2" src="https://placehold.co/600x400/cccccc/ffffff?text=Slot+3"><input type="file" id="gallery-upload-3" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100"><button class="save-gallery-btn mt-2 w-full bg-blue-600 text-white text-sm font-semibold px-3 py-1.5 rounded-lg hover:bg-blue-700 transition flex items-center justify-center"><span class="btn-text">Save Image 3</span><div class="admin-loader hidden" style="border-top-color: white; width: 16px; height: 16px;"></div></button></div></div><p class="text-xs text-red-600 font-semibold flex items-center gap-1 mt-4"><i data-lucide="alert-triangle" class="w-4 h-4"></i>Important: Images must be small (under 750 KB).</p></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Notes</h3><div class="flex gap-2 mb-4"><select id="admin-note-subject-filter" class="flex-grow px-4 py-2 border rounded-lg bg-white focus:ring-2 focus:ring-accent transition"></select></div><div id="admin-notes-list" class="space-y-2"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Blood Donors</h3><div id="admin-donors-list" class="space-y-2"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Notices</h3><form id="add-notice-form" class="space-y-4 mb-4"><input type="text" id="notice-title" placeholder="Notice Title" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"><textarea id="notice-desc" placeholder="Notice Description" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"></textarea><div><label for="notice-image-upload" class="block text-sm font-medium text-gray-700">Notice Image (optional)</label><input type="file" id="notice-image-upload" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100"></div><p class="text-xs text-red-600 font-semibold flex items-center gap-1"><i data-lucide="alert-triangle" class="w-4 h-4"></i>Important: Images must be small (under 750 KB).</p><button type="submit" class="w-full bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 flex items-center justify-center gap-2 font-semibold transition"><span class="btn-text">Post Notice</span><div class="admin-loader hidden"></div></button></form><div id="admin-notices-list" class="space-y-2"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Manage Team</h3><form id="add-team-member-form" class="space-y-4 mb-4"><input type="text" id="member-name" placeholder="Member Name" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"><input type="text" id="member-title" placeholder="Member Title (e.g., President)" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"><div><label for="member-image-upload" class="block text-sm font-medium text-gray-700">Profile Image</label><input type="file" id="member-image-upload" accept="image/*" required class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-accent-light file:text-accent-dark hover:file:bg-teal-100"></div><p class="text-xs text-red-600 font-semibold flex items-center gap-1"><i data-lucide="alert-triangle" class="w-4 h-4"></i>Important: Images must be small (under 750 KB).</p><button type="submit" class="w-full bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 flex items-center justify-center gap-2 font-semibold transition"><span class="btn-text">Add Member</span><div class="admin-loader hidden"></div></button></form><div id="admin-team-list" class="space-y-2"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200"><h3 class="text-xl font-semibold mb-4">Membership Requests</h3><div id="admin-requests-list" class="space-y-2"></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 lg:col-span-2"><h3 class="text-xl font-semibold mb-4">Manage CRs</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div><h4 class="font-bold mb-2">Pending Requests</h4><div id="admin-cr-pending-list" class="space-y-2"></div></div><div><h4 class="font-bold mb-2">Approved CRs</h4><div id="admin-cr-approved-list" class="space-y-2"></div></div></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 lg:col-span-2"><h3 class="text-xl font-semibold mb-4">Settings</h3><form id="settings-form" class="space-y-4"><label class="block"><span class="text-sm font-medium">Facebook Page Link</span><input type="url" id="facebook-link" required class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"></label><label class="block"><span class="text-sm font-medium">WhatsApp Group Link</span><input type="url" id="whatsapp-link" required class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-accent transition"></label><button type="submit" class="bg-red-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-red-700 transition flex items-center justify-center gap-2"><span class="btn-text flex items-center justify-center gap-2"><i data-lucide="save" class="w-5 h-5"></i>Save Settings</span><div class="loader hidden"></div></button></form></div></div></div>
     </main>
 
     <footer class="bg-white border-t mt-12"><div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-600"><p class="font-semibold text-gray-800">&copy; 2024 NUB Evening Society. All rights reserved.</p><div class="flex justify-center items-center space-x-6 mt-4"><a href="#" id="footer-fb-link" target="_blank" class="text-gray-500 hover:text-primary transition"><i data-lucide="facebook" class="w-6 h-6"></i></a><a href="#" id="footer-wa-link" target="_blank" class="text-gray-500 hover:text-accent transition"><i data-lucide="message-circle" class="w-6 h-6"></i></a></div><p class="mt-4 text-sm">Powered by NUB Evening Society</p></div></footer>
@@ -200,9 +198,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getFirestore, collection, getDocs, doc, addDoc, deleteDoc, onSnapshot, query, where, setDoc, getDoc, orderBy, limit, updateDoc, writeBatch } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
         import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-        import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging.js";
         
-        // --- Start of Main Application Logic ---
         const firebaseConfig = {
             apiKey: "AIzaSyAuMJ6Ok2juoW8axxa8X-sNW0iklFjAOxo",
             authDomain: "nub-evening-society.firebaseapp.com",
@@ -216,7 +212,6 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const auth = getAuth(app);
-        const messaging = getMessaging(app);
 
         let currentAdminSecret = '';
         let allSubjects = [];
@@ -225,9 +220,6 @@
         let allCRs = [];
         const departments = ["EBTX", "EEEE", "ECSE", "ECIVIL", "EME"];
         const semesters = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th"];
-        
-        // This will hold the service worker registration object once it's ready.
-        let swRegistration = null;
 
         const populateDropdowns = () => {
             const deptDropdowns = [
@@ -645,18 +637,6 @@
                     renderAdminGalleryPreviews(doc.data());
                 }
             });
-            onSnapshot(collection(db, 'subscribers'), s => {
-                const subscribers = s.docs.map(d => ({ id: d.id, ...d.data() }));
-                document.getElementById('subscriber-count').textContent = `Total Subscribers: ${subscribers.length}`;
-                const list = document.getElementById('admin-subscribers-list');
-                list.innerHTML = '';
-                subscribers.forEach(sub => {
-                    const item = createAdminDeleteItem(sub.id, sub.id.substring(0, 20) + '...');
-                    item.querySelector('.delete-btn').dataset.collection = 'subscribers';
-                    list.appendChild(item);
-                })
-                lucide.createIcons();
-            });
         };
         
         const handleAutomaticCrUpdates = async () => {
@@ -977,24 +957,27 @@
                 reader.readAsDataURL(file);
             });
         });
-        
+
+        // CR Edit Modal
         const crEditModalBackdrop = document.getElementById('cr-edit-modal-backdrop');
         const crEditModal = document.getElementById('cr-edit-modal');
         const crEditForm = document.getElementById('cr-edit-form');
         const crEditCancelBtn = document.getElementById('cr-edit-cancel');
 
         const openCrEditModal = async (crId) => {
-            const cr = allCRs.find(c => c.id === crId);
-            if(!cr) { showToast("CR not found.", false); return; }
-            
+            const crDoc = await getDoc(doc(db, "crs", crId));
+            if(!crDoc.exists()) {
+                showToast("CR not found.", false);
+                return;
+            }
+            const data = crDoc.data();
             crEditForm['cr-edit-id'].value = crId;
-            crEditForm['cr-edit-name'].value = cr.name;
-            crEditForm['cr-edit-department'].value = cr.department;
-            crEditForm['cr-edit-semester'].value = cr.semester;
-            crEditForm['cr-edit-section'].value = cr.section;
-            crEditForm['cr-edit-phone'].value = cr.phone;
-            crEditForm['cr-edit-facebook'].value = cr.facebook;
-
+            crEditForm['cr-edit-name'].value = data.name;
+            crEditForm['cr-edit-department'].value = data.department;
+            crEditForm['cr-edit-semester'].value = data.semester;
+            crEditForm['cr-edit-section'].value = data.section;
+            crEditForm['cr-edit-phone'].value = data.phone;
+            crEditForm['cr-edit-facebook'].value = data.facebook;
             crEditModalBackdrop.style.display = 'block';
             crEditModal.style.display = 'block';
         };
@@ -1032,128 +1015,6 @@
             }
         });
 
-        // --- Push Notifications ---
-        const requestNotificationPermission = async () => {
-            console.log('Requesting permission...');
-            try {
-                const permission = await Notification.requestPermission();
-                if (permission === 'granted') {
-                    console.log('Notification permission granted.');
-                    await navigator.serviceWorker.ready; // Wait for the service worker to be ready
-                    const currentToken = await getToken(messaging, { 
-                        vapidKey: 'BDmUAEy_dvzfTQR6VkP_M5CDjWcSbJhvk8HTcz2Cf-rOGTCXa7Fc7joJn29ALO7T2Ff9yxBfRPD7gvkg6wFdhP4',
-                        serviceWorkerRegistration: swRegistration
-                    });
-                    if (currentToken) {
-                        console.log('FCM Token:', currentToken);
-                        const tokenRef = doc(db, "subscribers", currentToken);
-                        await setDoc(tokenRef, { token: currentToken, createdAt: new Date() });
-                        showToast('You are now subscribed to notifications!');
-                    } else {
-                        console.log('No registration token available. Request permission to generate one.');
-                        showToast('Could not get notification token.', false);
-                    }
-                } else {
-                    console.log('Unable to get permission to notify.');
-                    showToast('Notification permission was denied.', false);
-                }
-            } catch (err) {
-                console.log('An error occurred while retrieving token. ', err);
-                showToast('An error occurred while subscribing.', false);
-            }
-        };
-
-        ['notification-bell', 'notification-bell-mobile'].forEach(id => {
-            document.getElementById(id).addEventListener('click', requestNotificationPermission);
-        });
-        
-        onMessage(messaging, (payload) => {
-            console.log('Message received. ', payload);
-            showToast(`New Notification: ${payload.notification.title}`);
-        });
-
-        document.getElementById('clear-subscribers-btn').addEventListener('click', () => {
-             showConfirmModal("Are you sure you want to delete ALL subscribers? This cannot be undone.", async () => {
-                try {
-                    const subsSnapshot = await getDocs(collection(db, 'subscribers'));
-                    const batch = writeBatch(db);
-                    subsSnapshot.docs.forEach(d => batch.delete(d.ref));
-                    await batch.commit();
-                    showToast("All subscribers have been cleared.");
-                } catch (error) {
-                    showToast("Failed to clear subscribers.", false);
-                    console.error(error);
-                }
-            });
-        });
-
-        document.getElementById('send-note-notification').addEventListener('click', () => {
-            showToast("This feature requires a backend function (Firebase Cloud Function) to be deployed.", false);
-        });
-        document.getElementById('send-notice-notification').addEventListener('click', () => {
-            showToast("This feature requires a backend function (Firebase Cloud Function) to be deployed.", false);
-        });
-
-        const coverPageForm = document.getElementById('coverPageForm');
-        let logoData = null;
-        const defaultLogoURL = "https://raw.githubusercontent.com/farhanmonsurfahim/assignment/main/nub.jpeg";
-        const defaultLogoImage = new Image();
-        defaultLogoImage.crossOrigin = "anonymous";
-        defaultLogoImage.onload = () => {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = defaultLogoImage.width;
-            canvas.height = defaultLogoImage.height;
-            ctx.drawImage(defaultLogoImage, 0, 0);
-            logoData = canvas.toDataURL('image/jpeg');
-        };
-        defaultLogoImage.src = defaultLogoURL;
-        const getCoverFormData = () => ({
-            universityName: document.getElementById('universityName').value, name: document.getElementById('name').value, studentId: document.getElementById('studentId').value, department: document.getElementById('department').value, semester: document.getElementById('semester').value, section: document.getElementById('section').value, assignmentTopic: document.getElementById('assignmentTopic').value, subject: document.getElementById('subject').value, courseTeacher: document.getElementById('courseTeacher').value, teacherDesignation: document.getElementById('teacherDesignation').value,
-            submissionDate: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
-        });
-        const generatePDF = () => {
-            const formData = getCoverFormData();
-            if (!logoData || !formData.name || !formData.studentId || !formData.department || !formData.semester || !formData.section || !formData.assignmentTopic || !formData.subject) {
-                if (typeof showToast === 'function') { showToast("Please fill in all required fields.", false); }
-                return;
-            }
-            if (typeof window.jspdf === 'undefined') { 
-                if (typeof showToast === 'function') { showToast('Error: PDF library not available.', false); }
-                return; 
-            }
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            doc.setDrawColor(0); doc.setLineWidth(1); doc.rect(10, 10, doc.internal.pageSize.getWidth() - 20, doc.internal.pageSize.getHeight() - 20);
-            const logoSize = 60, logoX = (doc.internal.pageSize.getWidth() - logoSize) / 2;
-            doc.addImage(logoData, 'JPEG', logoX, 40, logoSize, logoSize);
-            doc.setFontSize(22); doc.text(formData.universityName, doc.internal.pageSize.getWidth() / 2, 120, { align: 'center' });
-            doc.setLineWidth(0.5); doc.line(30, 135, doc.internal.pageSize.getWidth() - 30, 135);
-            doc.setFontSize(26); doc.setFont('Helvetica', 'bold'); doc.text('ASSIGNMENT SUBMISSION', doc.internal.pageSize.getWidth() / 2, 150, { align: 'center' });
-            doc.setFontSize(18); doc.setFont('Helvetica', 'normal'); doc.text('Subject: ' + formData.subject, doc.internal.pageSize.getWidth() / 2, 160, { align: 'center' });
-            const boxWidth = 150, boxHeight = 15, boxX = (doc.internal.pageSize.getWidth() - boxWidth) / 2;
-            doc.setDrawColor(0); doc.setFillColor(255, 255, 255); doc.rect(boxX, 170, boxWidth, boxHeight, 'FD');
-            doc.setFontSize(14); doc.text(formData.assignmentTopic, doc.internal.pageSize.getWidth() / 2, 179, { align: 'center' });
-            doc.setLineWidth(0.5); doc.line(30, 190, doc.internal.pageSize.getWidth() - 30, 190);
-            doc.setFontSize(14);
-            const leftX = 30, rightX = doc.internal.pageSize.getWidth() / 2 + 10, spacing = 8;
-            let currentY = 210;
-            doc.setFont('Helvetica', 'bold'); doc.text('Submitted by:', leftX, currentY); doc.line(leftX, currentY + 1, leftX + 25, currentY + 1);
-            doc.setFont('Helvetica', 'normal'); currentY += spacing + 5;
-            doc.text('Name: ' + formData.name, leftX, currentY); doc.text('ID: ' + formData.studentId, leftX, currentY + spacing); doc.text('Semester/Section: ' + formData.semester + '-' + formData.section, leftX, currentY + 2 * spacing); doc.text('Dept. of ' + formData.department, leftX, currentY + 3 * spacing);
-            let finalY = currentY + 4 * spacing;
-            if (formData.courseTeacher) {
-                currentY = 210;
-                doc.setFont('Helvetica', 'bold'); doc.text('Submitted to:', rightX, currentY); doc.line(rightX, currentY + 1, rightX + 25, currentY + 1);
-                doc.setFont('Helvetica', 'normal'); currentY += spacing + 5;
-                doc.text('Teacher Name: ' + formData.courseTeacher, rightX, currentY);
-                if (formData.teacherDesignation) { doc.text('Designation: ' + formData.teacherDesignation, rightX, currentY + spacing); currentY += spacing; }
-            }
-            const finalYPos = Math.max(finalY, currentY) + 20;
-            doc.text('Date: ' + formData.submissionDate, doc.internal.pageSize.getWidth() / 2, finalYPos, { align: 'center' });
-            doc.save(formData.assignmentTopic.replace(/ /g, '_') + '_Cover_Page.pdf');
-        };
-        if (coverPageForm) coverPageForm.addEventListener('submit', (e) => { e.preventDefault(); generatePDF(); });
 
         window.addEventListener('popstate', (e) => {
             const pageId = (e.state && e.state.page) ? e.state.page : 'home';
@@ -1162,19 +1023,69 @@
         window.onload = () => { 
             lucide.createIcons();
             populateDropdowns();
-            
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/nubes/firebase-messaging-sw.js')
-                .then((registration) => {
-                    console.log('Service Worker registration successful with scope: ', registration.scope);
-                    swRegistration = registration; // Store the registration
-                }).catch((err) => {
-                    console.log('Service Worker registration failed: ', err);
-                });
-            }
-
             const initialPageId = window.location.hash.substring(1) || 'home';
             showPage(initialPageId, false);
+
+            const coverPageForm = document.getElementById('coverPageForm');
+            let logoData = null;
+            const defaultLogoURL = "https://raw.githubusercontent.com/farhanmonsurfahim/assignment/main/nub.jpeg";
+            const defaultLogoImage = new Image();
+            defaultLogoImage.crossOrigin = "anonymous";
+            defaultLogoImage.onload = () => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = defaultLogoImage.width;
+                canvas.height = defaultLogoImage.height;
+                ctx.drawImage(defaultLogoImage, 0, 0);
+                logoData = canvas.toDataURL('image/jpeg');
+            };
+            defaultLogoImage.src = defaultLogoURL;
+            const getCoverFormData = () => ({
+                universityName: document.getElementById('universityName').value, name: document.getElementById('name').value, studentId: document.getElementById('studentId').value, department: document.getElementById('department').value, semester: document.getElementById('semester').value, section: document.getElementById('section').value, assignmentTopic: document.getElementById('assignmentTopic').value, subject: document.getElementById('subject').value, courseTeacher: document.getElementById('courseTeacher').value, teacherDesignation: document.getElementById('teacherDesignation').value,
+                submissionDate: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+            });
+            const generatePDF = () => {
+                const formData = getCoverFormData();
+                if (!logoData || !formData.name || !formData.studentId || !formData.department || !formData.semester || !formData.section || !formData.assignmentTopic || !formData.subject) {
+                    if (typeof showToast === 'function') { showToast("Please fill in all required fields.", false); }
+                    return;
+                }
+                if (typeof window.jspdf === 'undefined') { 
+                    if (typeof showToast === 'function') { showToast('Error: PDF library not available.', false); }
+                    return; 
+                }
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                doc.setDrawColor(0); doc.setLineWidth(1); doc.rect(10, 10, doc.internal.pageSize.getWidth() - 20, doc.internal.pageSize.getHeight() - 20);
+                const logoSize = 60, logoX = (doc.internal.pageSize.getWidth() - logoSize) / 2;
+                doc.addImage(logoData, 'JPEG', logoX, 40, logoSize, logoSize);
+                doc.setFontSize(22); doc.text(formData.universityName, doc.internal.pageSize.getWidth() / 2, 120, { align: 'center' });
+                doc.setLineWidth(0.5); doc.line(30, 135, doc.internal.pageSize.getWidth() - 30, 135);
+                doc.setFontSize(26); doc.setFont('Helvetica', 'bold'); doc.text('ASSIGNMENT SUBMISSION', doc.internal.pageSize.getWidth() / 2, 150, { align: 'center' });
+                doc.setFontSize(18); doc.setFont('Helvetica', 'normal'); doc.text('Subject: ' + formData.subject, doc.internal.pageSize.getWidth() / 2, 160, { align: 'center' });
+                const boxWidth = 150, boxHeight = 15, boxX = (doc.internal.pageSize.getWidth() - boxWidth) / 2;
+                doc.setDrawColor(0); doc.setFillColor(255, 255, 255); doc.rect(boxX, 170, boxWidth, boxHeight, 'FD');
+                doc.setFontSize(14); doc.text(formData.assignmentTopic, doc.internal.pageSize.getWidth() / 2, 179, { align: 'center' });
+                doc.setLineWidth(0.5); doc.line(30, 190, doc.internal.pageSize.getWidth() - 30, 190);
+                doc.setFontSize(14);
+                const leftX = 30, rightX = doc.internal.pageSize.getWidth() / 2 + 10, spacing = 8;
+                let currentY = 210;
+                doc.setFont('Helvetica', 'bold'); doc.text('Submitted by:', leftX, currentY); doc.line(leftX, currentY + 1, leftX + 25, currentY + 1);
+                doc.setFont('Helvetica', 'normal'); currentY += spacing + 5;
+                doc.text('Name: ' + formData.name, leftX, currentY); doc.text('ID: ' + formData.studentId, leftX, currentY + spacing); doc.text('Semester/Section: ' + formData.semester + '-' + formData.section, leftX, currentY + 2 * spacing); doc.text('Dept. of ' + formData.department, leftX, currentY + 3 * spacing);
+                let finalY = currentY + 4 * spacing;
+                if (formData.courseTeacher) {
+                    currentY = 210;
+                    doc.setFont('Helvetica', 'bold'); doc.text('Submitted to:', rightX, currentY); doc.line(rightX, currentY + 1, rightX + 25, currentY + 1);
+                    doc.setFont('Helvetica', 'normal'); currentY += spacing + 5;
+                    doc.text('Teacher Name: ' + formData.courseTeacher, rightX, currentY);
+                    if (formData.teacherDesignation) { doc.text('Designation: ' + formData.teacherDesignation, rightX, currentY + spacing); currentY += spacing; }
+                }
+                const finalYPos = Math.max(finalY, currentY) + 20;
+                doc.text('Date: ' + formData.submissionDate, doc.internal.pageSize.getWidth() / 2, finalYPos, { align: 'center' });
+                doc.save(formData.assignmentTopic.replace(/ /g, '_') + '_Cover_Page.pdf');
+            };
+            if (coverPageForm) coverPageForm.addEventListener('submit', (e) => { e.preventDefault(); generatePDF(); });
         };
     </script>
 </body>
