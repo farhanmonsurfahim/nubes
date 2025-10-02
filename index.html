@@ -203,7 +203,6 @@
         import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging.js";
         
         // --- Start of Main Application Logic ---
-
         const firebaseConfig = {
             apiKey: "AIzaSyAuMJ6Ok2juoW8axxa8X-sNW0iklFjAOxo",
             authDomain: "nub-evening-society.firebaseapp.com",
@@ -226,6 +225,9 @@
         let allCRs = [];
         const departments = ["EBTX", "EEEE", "ECSE", "ECIVIL", "EME"];
         const semesters = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th"];
+        
+        // This will hold the service worker registration object once it's ready.
+        let swRegistration = null;
 
         const populateDropdowns = () => {
             const deptDropdowns = [
@@ -1037,9 +1039,11 @@
                 const permission = await Notification.requestPermission();
                 if (permission === 'granted') {
                     console.log('Notification permission granted.');
-                    // Wait for the service worker to be ready
-                    await navigator.serviceWorker.ready;
-                    const currentToken = await getToken(messaging, { vapidKey: 'BDmUAEy_dvzfTQR6VkP_M5CDjWcSbJhvk8HTcz2Cf-rOGTCXa7Fc7joJn29ALO7T2Ff9yxBfRPD7gvkg6wFdhP4' });
+                    await navigator.serviceWorker.ready; // Wait for the service worker to be ready
+                    const currentToken = await getToken(messaging, { 
+                        vapidKey: 'BDmUAEy_dvzfTQR6VkP_M5CDjWcSbJhvk8HTcz2Cf-rOGTCXa7Fc7joJn29ALO7T2Ff9yxBfRPD7gvkg6wFdhP4',
+                        serviceWorkerRegistration: swRegistration
+                    });
                     if (currentToken) {
                         console.log('FCM Token:', currentToken);
                         const tokenRef = doc(db, "subscribers", currentToken);
@@ -1158,15 +1162,17 @@
         window.onload = () => { 
             lucide.createIcons();
             populateDropdowns();
-            // Manually register the service worker, specifying its path.
+            
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('/nubes/firebase-messaging-sw.js')
                 .then((registration) => {
                     console.log('Service Worker registration successful with scope: ', registration.scope);
+                    swRegistration = registration; // Store the registration
                 }).catch((err) => {
                     console.log('Service Worker registration failed: ', err);
                 });
             }
+
             const initialPageId = window.location.hash.substring(1) || 'home';
             showPage(initialPageId, false);
         };
